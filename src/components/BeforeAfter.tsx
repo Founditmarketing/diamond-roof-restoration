@@ -35,7 +35,7 @@ const allProjects = [
   {
     id: 'r3',
     category: 'residential',
-    image: '/diamondroofgallery18.jpg',
+    image: '/diamondroofgallery.jpg',
   }
 ];
 
