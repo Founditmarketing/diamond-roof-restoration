@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Phone, Menu, X } from 'lucide-react';
+import { Phone, Menu, X, Facebook, Instagram, MapPin } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 export function Header() {
@@ -53,16 +53,24 @@ export function Header() {
           
           {/* Left Side */}
           <div className={`flex-1 flex items-center justify-end pr-10 lg:pr-16 gap-6 lg:gap-10 transition-all duration-300 ${scrolled ? 'pt-0' : 'pt-3 lg:pt-5'}`}>
-            {/* Contact Detail Added */}
-            <a href="tel:9122076273" className="hidden xl:flex items-center gap-3 text-white hover:text-cyan transition-colors group mr-auto">
-              <div className="w-10 h-10 rounded-full bg-cyan/10 flex items-center justify-center border border-cyan/20 group-hover:scale-110 transition-transform">
-                <Phone className="w-4 h-4 text-cyan"/>
+            {/* Restructured Contact & Socials */}
+            <div className="hidden xl:flex items-center gap-4 mr-auto">
+              <div className="flex items-center gap-2 border-r border-white/20 pr-4">
+                <a href="https://www.facebook.com/diamondroofrestorations" target="_blank" rel="noreferrer" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-[#1877F2] hover:border-[#1877F2] text-white transition-all hover:scale-110">
+                  <Facebook className="w-3.5 h-3.5" />
+                </a>
+                <a href="https://www.instagram.com/diamondroofrestoration/" target="_blank" rel="noreferrer" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-[#E1306C] hover:border-[#E1306C] text-white transition-all hover:scale-110">
+                  <Instagram className="w-3.5 h-3.5" />
+                </a>
+                <a href="https://google.com/maps/place/Diamond+Roof+Restorations/data=!4m2!3m1!1s0x0:0x7881f2a0a8a703ea?sa=X&ved=1t:2428&hl=en&ictx=111" target="_blank" rel="noreferrer" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-[#4285F4] hover:border-[#4285F4] text-white transition-all hover:scale-110">
+                  <MapPin className="w-3.5 h-3.5" />
+                </a>
               </div>
-              <div>
-                <div className="text-[9px] uppercase tracking-[2px] text-ghost font-bold mb-0.5">24/7 Emergency</div>
-                <div className="text-[14px] font-bold tracking-[1px]">(912) 207-6273</div>
-              </div>
-            </a>
+              <a href="tel:9122076273" className="flex flex-col group">
+                <div className="text-[9px] uppercase tracking-[2px] text-cyan font-bold mb-0.5 group-hover:text-white transition-colors">Direct Contact</div>
+                <div className="text-[13px] font-bold tracking-[1px] text-white transition-colors">(912) 207-6273</div>
+              </a>
+            </div>
             
             {['Services', 'Commercial'].map((item) => (
               <a

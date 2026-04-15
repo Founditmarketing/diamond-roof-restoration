@@ -1,3 +1,5 @@
+import { Facebook, Instagram, MapPin } from 'lucide-react';
+
 export function Footer() {
   return (
     <footer className="bg-navy pt-20 pb-10 border-t border-cyan/30 relative overflow-hidden">
@@ -28,12 +30,18 @@ export function Footer() {
               The industry standard in commercial and premium residential roof restoration. Engineered for longevity, executed with precision.
             </p>
             <div className="flex gap-4">
-              {['Facebook', 'LinkedIn', 'Instagram'].map((social) => (
-                <a key={social} href="#" className="w-10 h-10 rounded bg-white/5 flex items-center justify-center border border-white/10 hover:bg-cyan hover:border-cyan transition-colors">
-                  <span className="sr-only">{social}</span>
-                  <div className="w-4 h-4 bg-white/80" style={{ maskImage: 'url(https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg)', maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center' }}></div>
-                </a>
-              ))}
+              <a href="https://www.facebook.com/diamondroofrestorations" target="_blank" rel="noreferrer" className="w-10 h-10 rounded bg-white/5 flex items-center justify-center border border-white/10 hover:bg-[#1877F2] hover:border-[#1877F2] text-white hover:scale-110 transition-all">
+                <span className="sr-only">Facebook</span>
+                <Facebook className="w-4 h-4" />
+              </a>
+              <a href="https://www.instagram.com/diamondroofrestoration/" target="_blank" rel="noreferrer" className="w-10 h-10 rounded bg-white/5 flex items-center justify-center border border-white/10 hover:bg-[#E1306C] hover:border-[#E1306C] text-white hover:scale-110 transition-all">
+                <span className="sr-only">Instagram</span>
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a href="https://google.com/maps/place/Diamond+Roof+Restorations/data=!4m2!3m1!1s0x0:0x7881f2a0a8a703ea?sa=X&ved=1t:2428&hl=en&ictx=111" target="_blank" rel="noreferrer" className="w-10 h-10 rounded bg-white/5 flex items-center justify-center border border-white/10 hover:bg-[#4285F4] hover:border-[#4285F4] text-white hover:scale-110 transition-all">
+                <span className="sr-only">Google Maps</span>
+                <MapPin className="w-4 h-4" />
+              </a>
             </div>
           </div>
 
