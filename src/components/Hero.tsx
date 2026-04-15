@@ -76,13 +76,16 @@ export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center pt-32 lg:pt-40 pb-20 overflow-hidden bg-navy">
       {/* Background Video/Image */}
-      <div className="absolute inset-0 z-0">
-        <img
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <motion.img
+          initial={{ scale: 1 }}
+          animate={{ scale: 1.15 }}
+          transition={{ duration: 25, ease: "linear", repeat: Infinity, repeatType: "reverse" }}
           src="/diamondroofgallery18.jpg"
           alt="Commercial Roof"
           className="w-full h-full object-cover opacity-30"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/80 to-navy/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/80 to-navy/50 pointer-events-none" />
       </div>
 
       <div className="absolute -top-[100px] -right-[100px] w-[500px] h-[500px] bg-gradient-to-br from-transparent via-transparent to-cyan/5 rotate-45 z-0 pointer-events-none" />
