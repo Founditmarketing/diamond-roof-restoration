@@ -52,23 +52,14 @@ export default function App() {
         {phase === 0 && (
           <motion.div 
             className="fixed inset-0 z-[9999] flex items-center justify-center p-6 pointer-events-none"
-            exit={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
           >
-            <div className="relative">
-              <motion.div 
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-                className="absolute inset-0 bg-cyan blur-[100px] opacity-30 rounded-full animate-pulse"
-              />
-              <motion.img 
-                layoutId={isMobile ? "main-logo-mobile" : "main-logo"}
-                transition={{ layout: { duration: 1.5, ease: [0.22, 1, 0.36, 1] } }}
-                src="/diamondrooflogo.webp"
-                alt="Diamond Roof Restoration"
-                className="w-48 md:w-64 relative z-10 drop-shadow-[0_0_50px_rgba(64,145,177,0.5)]"
-              />
-            </div>
+            <motion.img 
+              layoutId={isMobile ? "main-logo-mobile" : "main-logo"}
+              transition={{ layout: { duration: 1.5, ease: [0.22, 1, 0.36, 1] } }}
+              src="/diamondrooflogo.webp"
+              alt="Diamond Roof Restoration"
+              className="w-48 md:w-64 relative z-10"
+            />
           </motion.div>
         )}
       </AnimatePresence>
