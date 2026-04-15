@@ -78,7 +78,7 @@ export function Hero() {
       {/* Background Video/Image */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.unsplash.com/photo-1632759145351-1d592919f522?q=80&w=2940&auto=format&fit=crop"
+          src="/diamondroofgallery.jpg"
           alt="Commercial Roof"
           className="w-full h-full object-cover opacity-30"
         />

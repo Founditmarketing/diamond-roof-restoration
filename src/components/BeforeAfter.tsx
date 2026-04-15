@@ -5,37 +5,37 @@ const allProjects = [
   {
     id: 'c1',
     category: 'commercial',
-    image: 'https://images.unsplash.com/photo-1621293954908-907159247fc8?q=80&w=1200&auto=format&fit=crop',
+    image: '/diamondroofgallery10.jpg',
   },
   {
     id: 'c2',
     category: 'commercial',
-    image: 'https://images.unsplash.com/photo-1541889028647-5c25091e4c15?q=80&w=1200&auto=format&fit=crop',
+    image: '/diamondroofgallery11.jpg',
   },
   {
     id: 'c3',
     category: 'commercial',
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200&auto=format&fit=crop',
+    image: '/diamondroofgallery12.jpg',
   },
   {
     id: 'c4',
     category: 'commercial',
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop',
+    image: '/diamondroofgallery13.jpg',
   },
   {
     id: 'r1',
     category: 'residential',
-    image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1200&auto=format&fit=crop',
+    image: '/diamondroofgallery15.jpg',
   },
   {
     id: 'r2',
     category: 'residential',
-    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1200&auto=format&fit=crop',
+    image: '/diamondroofgallery17.jpg',
   },
   {
     id: 'r3',
     category: 'residential',
-    image: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?q=80&w=1200&auto=format&fit=crop',
+    image: '/diamondroofgallery18.jpg',
   }
 ];
 

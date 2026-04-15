@@ -9,7 +9,7 @@ const reviews = [
     role: 'Property Manager',
     text: "Diamond Roof Restoration completely transformed our 50,000 sq ft facility. The team was professional, fast, and the new TPO system is flawless. We haven't had a single leak since.",
     rating: 5,
-    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=150&auto=format&fit=crop'
+    avatar: '/diamondroofgallery19.jpg'
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const reviews = [
     role: 'Homeowner',
     text: "After a massive hail storm, Diamond was the only company that gave us a straight answer. They handled the insurance claim and installed a beautiful architectural shingle roof in two days.",
     rating: 5,
-    avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=150&auto=format&fit=crop'
+    avatar: '/diamondroofgallery20.jpg'
   },
   {
     id: 3,
@@ -25,7 +25,7 @@ const reviews = [
     role: 'Facility Director',
     text: "Their commercial waterproofing process is top-notch. They saved us tens of thousands by restoring our existing metal roof instead of a full tear-off.",
     rating: 5,
-    avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=150&auto=format&fit=crop'
+    avatar: '/diamondroofgallery21.jpg'
   },
   {
     id: 4,
@@ -33,7 +33,7 @@ const reviews = [
     role: 'HOA President',
     text: "We hired Diamond to replace the roofs on 12 multi-family buildings. The project management was exceptional, keeping residents informed and finishing ahead of schedule.",
     rating: 5,
-    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=150&auto=format&fit=crop'
+    avatar: '/diamondroofgallery22.jpg'
   },
   {
     id: 5,
@@ -41,7 +41,7 @@ const reviews = [
     role: 'Warehouse Owner',
     text: "The spray foam coating they applied to our aging warehouse roof stopped all our leaks immediately and noticeably reduced our cooling costs this summer. Highly recommended.",
     rating: 5,
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop'
+    avatar: '/diamondroofgallery23.jpg'
   },
   {
     id: 6,
@@ -49,7 +49,7 @@ const reviews = [
     role: 'Retail Store Owner',
     text: "Professional from start to finish. They repaired our flat roof without disrupting our business hours. The crew was clean, respectful, and the work is guaranteed.",
     rating: 5,
-    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150&auto=format&fit=crop'
+    avatar: '/diamondroofgallery4.jpg'
   }
 ];
 
