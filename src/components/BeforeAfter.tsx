@@ -36,11 +36,6 @@ const allProjects = [
     id: 'r3',
     category: 'residential',
     image: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?q=80&w=1200&auto=format&fit=crop',
-  },
-  {
-    id: 'r4',
-    category: 'residential',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop',
   }
 ];
 
@@ -93,7 +88,7 @@ export function BeforeAfter() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* Spotlit Image */}
-          <div className="lg:col-span-8 h-[400px] md:h-[500px] relative rounded-2xl overflow-hidden border border-cyan/30 shadow-[0_40px_100px_rgba(0,0,0,0.5)] group">
+          <div className="lg:col-span-8 h-[400px] md:h-[500px] lg:h-full relative rounded-2xl overflow-hidden border border-cyan/30 shadow-[0_40px_100px_rgba(0,0,0,0.5)] group">
             <AnimatePresence mode="wait">
               <motion.img
                 key={spotlitProject.id}

@@ -19,7 +19,7 @@ export function AnnouncementBar() {
             <span className="mx-4">•</span>
             <span>Emergency Storm Response Available 24/7</span>
             <span className="mx-4">•</span>
-            <span>Call (888) 555-ROOF</span>
+            <span>Call (912) 207-6273</span>
             <span className="mx-4">•</span>
             <span>Free Inspections For A Limited Time</span>
           </div>

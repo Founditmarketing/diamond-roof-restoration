@@ -37,49 +37,58 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Links Columns */}
+          {/* Quick Links Columns */}
           <div>
-            <h4 className="font-display font-bold text-[12px] uppercase tracking-widest text-white mb-6">Services</h4>
+            <h4 className="font-display font-bold text-[12px] uppercase tracking-widest text-white mb-6">Quick Links</h4>
             <ul className="space-y-3">
-              {['Commercial TPO', 'Metal Restoration', 'Membrane Systems', 'Spray Foam', 'Residential Shingle'].map((link) => (
+              {['Home', 'Projects', 'Service Areas', 'About Us', 'Contact', 'Review Us'].map((link) => (
                 <li key={link}>
-                  <a href="#" className="text-ghost/60 hover:text-cyan text-[13px] transition-colors">{link}</a>
+                  <a href={`#${link.toLowerCase().replace(' ', '-')}`} className="text-ghost/60 hover:text-cyan text-[13px] transition-colors">{link}</a>
                 </li>
               ))}
             </ul>
           </div>
 
+          {/* Services & Hours Column */}
           <div>
-            <h4 className="font-display font-bold text-[12px] uppercase tracking-widest text-white mb-6">Company</h4>
-            <ul className="space-y-3">
-              {['About Us', 'Our Process', 'Case Studies', 'Careers', 'Contact'].map((link) => (
+            <h4 className="font-display font-bold text-[12px] uppercase tracking-widest text-white mb-6">Our Services</h4>
+            <ul className="space-y-3 mb-8">
+              {['Roofing Contractor', 'Metal Roof Installation', 'Asphalt Shingle Roof Installation'].map((link) => (
                 <li key={link}>
-                  <a href="#" className="text-ghost/60 hover:text-cyan text-[13px] transition-colors">{link}</a>
+                  <a href={`#${link.toLowerCase().replace(/ /g, '-')}`} className="text-ghost/60 hover:text-cyan text-[12px] transition-colors block">{link}</a>
                 </li>
               ))}
             </ul>
+
+            <h4 className="font-display font-bold text-[12px] uppercase tracking-widest text-white mb-4">Operating Hours</h4>
+            <div className="text-ghost/60 text-[12px] space-y-1">
+              <div>Mon - Fri: 9:00 am - 5:00 pm</div>
+              <div>Sat - Sun: Closed</div>
+            </div>
           </div>
 
           {/* Location & Contact Column */}
           <div>
-            <h4 className="font-display font-bold text-[12px] uppercase tracking-widest text-white mb-6">Headquarters</h4>
-            <div className="mb-5">
-              <div className="text-ghost font-bold text-[13px] leading-relaxed mb-1">
+            <h4 className="font-display font-bold text-[12px] uppercase tracking-widest text-white mb-6">Contact & HQ</h4>
+            <div className="mb-6">
+              <div className="text-ghost font-bold text-[13px] leading-relaxed mb-3">
                 Diamond Roof Restorations<br/>
                 133 W Cherry St Suite 204<br/>
                 Jesup, GA 31545, USA
               </div>
-              <div className="text-cyan font-bold text-[16px] mt-2">(888) 555-ROOF</div>
+              <a href="tel:9122076273" className="block text-cyan hover:text-white transition-colors font-bold text-[16px] mb-1">(912) 207-6273</a>
+              <a href="mailto:diamondroofrestorations@protonmail.com" className="block text-cyan/80 hover:text-white transition-colors text-[11px] break-all">diamondroofrestorations@protonmail.com</a>
             </div>
             <div>
               <h4 className="font-display font-bold text-[12px] uppercase tracking-widest text-white mb-3">Service Areas</h4>
-              <div className="text-ghost/70 text-[12px] leading-relaxed">
-                Baxley, GA &bull; Blackshear, GA &bull; Brunswick, GA &bull; Hilton Head, SC<br/>
-                Hinesville, GA &bull; Jacksonville, FL &bull; Jesup, GA &bull; Pooler, GA
+              <div className="text-ghost/70 text-[11px] leading-relaxed">
+                Baxley, GA &bull; Blackshear, GA &bull; Brunswick, GA &bull; Hilton Head, SC &bull; Hinesville, GA &bull; Jacksonville, FL &bull; Jesup, GA &bull; Pooler, GA
+                <div className="mt-2">
+                  <a href="#locations" className="text-cyan hover:text-white transition-colors uppercase font-bold text-[10px] tracking-wider">See All Service Areas →</a>
+                </div>
               </div>
             </div>
           </div>
-
         </div>
 
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">

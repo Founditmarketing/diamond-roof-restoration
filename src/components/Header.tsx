@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Phone, Menu } from 'lucide-react';
-import { motion } from 'motion/react';
+import { Phone, Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 
 export function Header() {
   const [scrollY, setScrollY] = useState(0);
   const [scrolled, setScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,31 +29,38 @@ export function Header() {
         
         {/* Mobile Logo */}
         <div className="md:hidden flex-shrink-0 z-50">
-          <img 
+          <motion.img 
+            layoutId="main-logo-mobile"
+            transition={{ layout: { duration: 1.5, ease: [0.22, 1, 0.36, 1] } }}
             src="/diamondrooflogo.webp" 
             alt="Diamond Roof Restoration" 
-            className="h-16 w-auto drop-shadow-[0_0_15px_rgba(64,145,177,0.3)]"
+            className={`w-auto drop-shadow-[0_0_15px_rgba(64,145,177,0.3)] transition-[height] duration-500 ${
+              scrolled ? 'h-12' : 'h-20'
+            }`}
           />
         </div>
 
         {/* Mobile Menu Button */}
-        <button className="md:hidden text-white z-50 p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-          <Menu className="w-6 h-6 text-cyan" />
+        <button 
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="md:hidden text-white z-50 p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+        >
+          {isMenuOpen ? <X className="w-6 h-6 text-cyan" /> : <Menu className="w-6 h-6 text-cyan" />}
         </button>
 
         {/* Desktop Layout */}
-        <div className="hidden md:flex w-full items-start justify-between relative">
+        <div className={`hidden md:flex w-full justify-between relative transition-all duration-300 ${scrolled ? 'items-center' : 'items-start'}`}>
           
           {/* Left Side */}
-          <div className="flex-1 flex items-center justify-end pr-10 lg:pr-16 gap-6 lg:gap-10 pt-3 lg:pt-5">
+          <div className={`flex-1 flex items-center justify-end pr-10 lg:pr-16 gap-6 lg:gap-10 transition-all duration-300 ${scrolled ? 'pt-0' : 'pt-3 lg:pt-5'}`}>
             {/* Contact Detail Added */}
-            <a href="tel:8885557663" className="hidden xl:flex items-center gap-3 text-white hover:text-cyan transition-colors group mr-auto">
+            <a href="tel:9122076273" className="hidden xl:flex items-center gap-3 text-white hover:text-cyan transition-colors group mr-auto">
               <div className="w-10 h-10 rounded-full bg-cyan/10 flex items-center justify-center border border-cyan/20 group-hover:scale-110 transition-transform">
                 <Phone className="w-4 h-4 text-cyan"/>
               </div>
               <div>
                 <div className="text-[9px] uppercase tracking-[2px] text-ghost font-bold mb-0.5">24/7 Emergency</div>
-                <div className="text-[14px] font-bold tracking-[1px]">(888) 555-ROOF</div>
+                <div className="text-[14px] font-bold tracking-[1px]">(912) 207-6273</div>
               </div>
             </a>
             
@@ -71,22 +79,25 @@ export function Header() {
           {/* Centered Logo */}
           <div className="flex-shrink-0 z-50 relative group px-4">
             {/* Logo Glow Effect */}
-            <div className="absolute inset-0 bg-cyan blur-[40px] opacity-20 scale-150 rounded-full group-hover:opacity-40 transition-opacity duration-500 pointer-events-none"></div>
+            <div className={`absolute inset-0 bg-cyan blur-[40px] opacity-20 scale-150 rounded-full group-hover:opacity-40 transition-opacity duration-500 pointer-events-none ${scrolled ? 'hidden' : 'block'}`}></div>
             
-            {/* The Logo image, shrinking slightly when scrolled */}
+            {/* The Logo image, shrinking significantly when scrolled */}
             <a href="#">
-              <img 
+              <motion.img 
+                layoutId="main-logo"
+                whileHover={{ scale: 1.05 }}
+                transition={{ layout: { duration: 1.5, ease: [0.22, 1, 0.36, 1] } }}
                 src="/diamondrooflogo.webp" 
                 alt="Diamond Roof Restoration" 
-                className={`transition-all duration-500 relative z-10 drop-shadow-[0_0_15px_rgba(64,145,177,0.3)] hover:scale-105 ${
-                  scrolled ? 'h-20 lg:h-24' : 'h-28 lg:h-36'
+                className={`relative z-10 drop-shadow-[0_0_15px_rgba(64,145,177,0.3)] transition-[height] duration-500 ${
+                  scrolled ? 'h-14 lg:h-16' : 'h-28 lg:h-36'
                 } w-auto`}
               />
             </a>
           </div>
 
           {/* Right Side */}
-          <div className="flex-1 flex items-center justify-start pl-10 lg:pl-16 gap-6 lg:gap-10 pt-3 lg:pt-5">
+          <div className={`flex-1 flex items-center justify-start pl-10 lg:pl-16 gap-6 lg:gap-10 transition-all duration-300 ${scrolled ? 'pt-0' : 'pt-3 lg:pt-5'}`}>
             {['Residential', 'About Us'].map((item) => (
               <a
                 key={item}
@@ -106,6 +117,51 @@ export function Header() {
           
         </div>
       </div>
+
+      {/* Mobile Slide-Out Menu */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: '100vh' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="absolute top-full left-0 right-0 w-full bg-navy/95 backdrop-blur-3xl border-b border-cyan/20 overflow-y-auto md:hidden shadow-[0_40px_100px_rgba(0,0,0,0.8)]"
+          >
+            <div className="flex flex-col px-6 py-8 space-y-6">
+              {['Services', 'Commercial', 'Residential', 'About Us'].map((item) => (
+                <a
+                  key={item}
+                  onClick={() => setIsMenuOpen(false)}
+                  href={`#${item.toLowerCase().replace(' ', '-')}`}
+                  className="text-white hover:text-cyan text-lg font-bold tracking-[2px] uppercase transition-colors"
+                >
+                  {item}
+                </a>
+              ))}
+              
+              <div className="h-px w-full bg-white/10 my-4"></div>
+
+              <a href="tel:9122076273" className="flex items-center gap-4 text-white hover:text-cyan transition-colors group">
+                <div className="w-12 h-12 rounded-full bg-cyan/10 flex items-center justify-center border border-cyan/20 group-hover:scale-110 transition-transform">
+                  <Phone className="w-5 h-5 text-cyan"/>
+                </div>
+                <div>
+                  <div className="text-[10px] uppercase tracking-[2px] text-ghost font-bold mb-1">24/7 Emergency Service</div>
+                  <div className="text-lg font-bold tracking-[1px]">(912) 207-6273</div>
+                </div>
+              </a>
+
+              <button 
+                onClick={() => setIsMenuOpen(false)}
+                className="w-full shimmer-btn bg-cyan text-white px-6 py-4 rounded text-sm font-extrabold uppercase tracking-[2px] shadow-[0_0_20px_rgba(64,145,177,0.4)] mt-4 transition-all hover:bg-cyan/90"
+              >
+                GET A FREE QUOTE
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

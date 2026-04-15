@@ -4,24 +4,28 @@ import { Plus, Minus, Send, Phone } from 'lucide-react';
 
 const faqs = [
   {
-    question: "How long does a commercial roof restoration take?",
-    answer: "Project timelines vary based on the size and condition of the roof. However, our fluid-applied restoration systems are typically completed 30-50% faster than traditional tear-offs, minimizing disruption to your business operations."
+    question: "What roofing services does Diamond Roof Restorations offer?",
+    answer: "We specialize in metal roof installation, asphalt shingle roof installation, membrane roofing, single ply roofing, fabric reinforced roofing, waterproofing, and spray foam roofing for commercial properties. Our focus is restoring existing roofs to extend their life rather than requiring full replacement."
   },
   {
-    question: "Do you offer warranties on your work?",
-    answer: "Yes. We stand behind our Diamond Standard with industry-leading warranties. We offer up to 20-year NDL (No Dollar Limit) warranties on commercial systems and lifetime limited warranties on premium residential shingles."
+    question: "How can roof restoration save money compared to full replacement?",
+    answer: "Roof restoration uses high-performance coatings to stop leaks and improve energy efficiency at a fraction of replacement cost. Many commercial roofs in Savannah and across Georgia can be restored instead of torn off and rebuilt."
   },
   {
-    question: "Can you install a new system over my existing roof?",
-    answer: "In many cases, yes. If the underlying insulation is dry and structurally sound, our silicone and acrylic coating systems can be applied directly over your existing roof, saving you tens of thousands in tear-off and disposal costs."
+    question: "What should I do if my roof is leaking?",
+    answer: "Contact Diamond Roof Restorations for a professional inspection in your area—whether you're in Jacksonville, Valdosta, or another Georgia service location. We'll assess the damage and recommend the right restoration solution to stop the leak."
   },
   {
-    question: "Do you handle insurance claims for storm damage?",
-    answer: "Absolutely. We have dedicated storm damage specialists who will work directly with your insurance adjuster to ensure all damage is properly documented and covered, making the process completely hands-off for you."
+    question: "How do I schedule a roof inspection in Jesup or nearby areas?",
+    answer: "Call Diamond Roof Restorations to request an inspection at your commercial property. We serve Jesup, Baxley, Waycross, Brunswick, and surrounding areas with fast scheduling to get you answers quickly."
   },
   {
-    question: "What makes Diamond Roof Restoration different?",
-    answer: "We don't just cover up problems; we engineer solutions. From our rigorous initial inspections to our use of premium-grade materials and highly trained crews, we focus on long-term asset protection rather than quick fixes."
+    question: "What is the difference between roof restoration and replacement?",
+    answer: "Restoration applies protective coatings to stop leaks and extend roof life without removal. Replacement removes and rebuilds the entire roof system—a much larger investment we avoid unless truly necessary."
+  },
+  {
+    question: "Do you offer waterproofing services for flat roofs?",
+    answer: "Yes, we provide waterproofing and specialized coatings for flat commercial roofs, including membrane, single ply, and spray foam systems. Our waterproofing solutions protect properties from leaks year-round across Georgia and into Florida."
   }
 ];
 
@@ -117,8 +121,8 @@ export function FAQ() {
                 </div>
                 <div>
                   <div className="text-[10px] uppercase tracking-widest text-ghost/60 font-bold mb-1">24/7 Support Line</div>
-                  <a href="tel:8885557663" className="text-xl font-bold text-white hover:text-cyan transition-colors">
-                    (888) 555-ROOF
+                  <a href="tel:9122076273" className="text-lg md:text-xl font-bold text-white hover:text-cyan transition-colors">
+                    (912) 207-6273
                   </a>
                 </div>
               </div>
