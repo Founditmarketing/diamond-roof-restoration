@@ -51,44 +51,50 @@ export function TrustBanner() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="bg-navy py-10 border-t border-cyan/30 relative z-20">
-      <div className="container mx-auto px-6" ref={ref}>
-        <div className="flex flex-col md:flex-row gap-10 items-center justify-between">
+    <section className="bg-navy py-6 border-y border-white/5 relative z-20">
+      <div className="container mx-auto px-6 max-w-7xl" ref={ref}>
+        <div className="flex flex-col md:flex-row flex-wrap items-center justify-center md:justify-between gap-8 md:gap-4 lg:gap-8 w-full">
           
-          <div className="flex flex-wrap gap-10">
-            {/* Stats */}
-            <div className="flex flex-col items-center md:items-start">
-              <div className="text-[24px] font-display font-extrabold text-cyan flex items-center">
-                {isInView ? <CountUp end={500} duration={2.5} easingFn={(t, b, c, d) => c * (t /= d) * t * t + b} /> : '0'}
-                <span>+</span>
-              </div>
-              <div className="text-ghost text-[11px] uppercase tracking-[1px] mt-1">Roofs Restored</div>
+          {/* Stat 1 */}
+          <div className="flex items-center gap-3 md:gap-4 group">
+            <div className="text-[36px] lg:text-[44px] font-display font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70 flex items-center group-hover:scale-105 transition-transform duration-500">
+              {isInView ? <CountUp end={500} duration={2.5} easingFn={(t, b, c, d) => c * (t /= d) * t * t + b} /> : '0'}
+              <span className="text-cyan ml-1 text-[24px] lg:text-[32px]">+</span>
             </div>
-
-            <div className="flex flex-col items-center md:items-start">
-              <div className="text-[24px] font-display font-extrabold text-cyan flex items-center">
-                {isInView ? <CountUp end={120} duration={2.5} easingFn={(t, b, c, d) => c * (t /= d) * t * t + b} /> : '0'}
-                <span>+</span>
-              </div>
-              <div className="text-ghost text-[11px] uppercase tracking-[1px] mt-1">Commercial Sites</div>
-            </div>
-
-            <div className="flex flex-col items-center md:items-start">
-              <div className="text-[24px] font-display font-extrabold text-cyan flex items-center">
-                {isInView ? <CountUp end={4.9} decimals={1} duration={2.5} easingFn={(t, b, c, d) => c * (t /= d) * t * t + b} /> : '0'}
-                <span>/5</span>
-              </div>
-              <div className="text-ghost text-[11px] uppercase tracking-[1px] mt-1">Customer Rating</div>
-            </div>
+            <div className="text-ghost/60 text-[9px] lg:text-[11px] uppercase tracking-[2px] leading-[1.3] font-bold">Roofs<br/><span className="text-white">Restored</span></div>
           </div>
 
+          <div className="hidden md:block w-px h-10 lg:h-12 bg-gradient-to-b from-transparent via-cyan/20 to-transparent"></div>
+
+          {/* Stat 2 */}
+          <div className="flex items-center gap-3 md:gap-4 group">
+            <div className="text-[36px] lg:text-[44px] font-display font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70 flex items-center group-hover:scale-105 transition-transform duration-500">
+              {isInView ? <CountUp end={120} duration={2.5} easingFn={(t, b, c, d) => c * (t /= d) * t * t + b} /> : '0'}
+              <span className="text-cyan ml-1 text-[24px] lg:text-[32px]">+</span>
+            </div>
+            <div className="text-ghost/60 text-[9px] lg:text-[11px] uppercase tracking-[2px] leading-[1.3] font-bold">Commercial<br/><span className="text-white">Sites</span></div>
+          </div>
+
+          <div className="hidden md:block w-px h-10 lg:h-12 bg-gradient-to-b from-transparent via-cyan/20 to-transparent"></div>
+
+          {/* Stat 3 */}
+          <div className="flex items-center gap-3 md:gap-4 group">
+            <div className="text-[36px] lg:text-[44px] font-display font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70 flex items-center group-hover:scale-105 transition-transform duration-500">
+              {isInView ? <CountUp end={4.9} decimals={1} duration={2.5} easingFn={(t, b, c, d) => c * (t /= d) * t * t + b} /> : '0'}
+              <span className="text-cyan ml-1 text-[20px] lg:text-[24px]">/5</span>
+            </div>
+            <div className="text-ghost/60 text-[9px] lg:text-[11px] uppercase tracking-[2px] leading-[1.3] font-bold">Customer<br/><span className="text-white">Rating</span></div>
+          </div>
+
+          <div className="hidden lg:block w-px h-10 lg:h-12 bg-gradient-to-b from-transparent via-cyan/20 to-transparent"></div>
+
           {/* Badges */}
-          <div className="flex items-center justify-center md:justify-end gap-4 perspective-1000">
+          <div className="flex items-center justify-center gap-4 lg:gap-6 perspective-1000 mt-2 md:mt-0">
             <TiltBadge>
-              <div className="text-white font-display font-bold text-xl tracking-tighter">BBB <span className="text-cyan text-sm">A+</span></div>
+              <div className="text-white font-display font-bold text-sm lg:text-lg tracking-tighter">BBB <span className="text-cyan text-[9px] lg:text-[11px]">A+</span></div>
             </TiltBadge>
             <TiltBadge>
-              <div className="text-white font-display font-bold text-xl tracking-tighter">OSHA <span className="text-cyan text-sm">CERT</span></div>
+              <div className="text-white font-display font-bold text-sm lg:text-lg tracking-tighter">OSHA <span className="text-cyan text-[9px] lg:text-[11px]">CERT</span></div>
             </TiltBadge>
           </div>
 
