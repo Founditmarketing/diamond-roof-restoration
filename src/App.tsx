@@ -52,6 +52,8 @@ export default function App() {
         {phase === 0 && (
           <motion.div 
             className="fixed inset-0 z-[9999] flex items-center justify-center p-6 pointer-events-none"
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
           >
             <div className="relative">
               <div className="absolute inset-0 bg-cyan blur-[100px] opacity-30 rounded-full animate-pulse"></div>
