@@ -52,11 +52,15 @@ export default function App() {
         {phase === 0 && (
           <motion.div 
             className="fixed inset-0 z-[9999] flex items-center justify-center p-6 pointer-events-none"
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
+            exit={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
           >
             <div className="relative">
-              <div className="absolute inset-0 bg-cyan blur-[100px] opacity-30 rounded-full animate-pulse"></div>
+              <motion.div 
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                className="absolute inset-0 bg-cyan blur-[100px] opacity-30 rounded-full animate-pulse"
+              />
               <motion.img 
                 layoutId={isMobile ? "main-logo-mobile" : "main-logo"}
                 transition={{ layout: { duration: 1.5, ease: [0.22, 1, 0.36, 1] } }}
