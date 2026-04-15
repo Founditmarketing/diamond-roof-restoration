@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Phone, Menu, X, Facebook, Instagram, MapPin } from 'lucide-react';
+import { Phone, Menu, X, Facebook, Instagram, MapPin, Mail } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 export function Header() {
@@ -25,7 +25,7 @@ export function Header() {
         scrolled ? 'glass-header py-2 shadow-2xl shadow-black/50' : 'bg-transparent pt-1 pb-4'
       }`}
     >
-      <div className="w-full px-6 lg:px-12 xl:px-20 relative flex items-center justify-between md:justify-center">
+      <div className="w-full px-4 lg:px-8 xl:px-12 relative flex items-center justify-between md:justify-center">
         
         {/* Mobile Logo */}
         <div className="md:hidden flex-shrink-0 z-50">
@@ -40,19 +40,27 @@ export function Header() {
           />
         </div>
 
-        {/* Mobile Menu Button */}
-        <button 
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden text-white z-50 p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
-        >
-          {isMenuOpen ? <X className="w-6 h-6 text-cyan" /> : <Menu className="w-6 h-6 text-cyan" />}
-        </button>
+        {/* Mobile Socials & Menu Button */}
+        <div className="md:hidden flex items-center gap-2 z-50">
+          <a href="https://www.facebook.com/diamondroofrestorations" target="_blank" rel="noreferrer" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-[#1877F2] text-white transition-colors">
+            <Facebook className="w-4 h-4" />
+          </a>
+          <a href="https://www.instagram.com/diamondroofrestoration/" target="_blank" rel="noreferrer" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-[#E1306C] text-white transition-colors">
+            <Instagram className="w-4 h-4" />
+          </a>
+          <button 
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="text-white ml-2 p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors flex items-center justify-center"
+          >
+            {isMenuOpen ? <X className="w-5 h-5 text-cyan" /> : <Menu className="w-5 h-5 text-cyan" />}
+          </button>
+        </div>
 
         {/* Desktop Layout */}
         <div className={`hidden md:flex w-full justify-between relative transition-all duration-300 ${scrolled ? 'items-center' : 'items-start'}`}>
           
           {/* Left Side */}
-          <div className={`flex-1 flex items-center justify-end pr-10 lg:pr-16 gap-6 lg:gap-10 transition-all duration-300 ${scrolled ? 'pt-0' : 'pt-3 lg:pt-5'}`}>
+          <div className={`flex-1 flex items-center justify-end pr-6 lg:pr-8 xl:pr-12 gap-4 lg:gap-8 transition-all duration-300 ${scrolled ? 'pt-0' : 'pt-3 lg:pt-5'}`}>
             {/* Restructured Contact & Socials */}
             <div className="hidden xl:flex items-center gap-4 mr-auto">
               <div className="flex items-center gap-2 border-r border-white/20 pr-4">
@@ -105,7 +113,7 @@ export function Header() {
           </div>
 
           {/* Right Side */}
-          <div className={`flex-1 flex items-center justify-start pl-10 lg:pl-16 gap-6 lg:gap-10 transition-all duration-300 ${scrolled ? 'pt-0' : 'pt-3 lg:pt-5'}`}>
+          <div className={`flex-1 flex items-center justify-start pl-6 lg:pl-8 xl:pl-12 gap-4 lg:gap-8 transition-all duration-300 ${scrolled ? 'pt-0' : 'pt-3 lg:pt-5'}`}>
             {['Residential', 'About Us'].map((item) => (
               <a
                 key={item}
@@ -150,8 +158,8 @@ export function Header() {
               
               <div className="h-px w-full bg-white/10 my-4"></div>
 
-              <a href="tel:9122076273" className="flex items-center gap-4 text-white hover:text-cyan transition-colors group">
-                <div className="w-12 h-12 rounded-full bg-cyan/10 flex items-center justify-center border border-cyan/20 group-hover:scale-110 transition-transform">
+              <a href="tel:9122076273" className="flex items-center gap-4 text-white hover:text-cyan transition-colors group mb-2">
+                <div className="w-12 h-12 rounded-full bg-cyan/10 flex flex-shrink-0 items-center justify-center border border-cyan/20 group-hover:scale-110 transition-transform">
                   <Phone className="w-5 h-5 text-cyan"/>
                 </div>
                 <div>
@@ -159,6 +167,26 @@ export function Header() {
                   <div className="text-lg font-bold tracking-[1px]">(912) 207-6273</div>
                 </div>
               </a>
+
+              {/* Extended Contact Info Added */}
+              <div className="flex flex-col gap-4 border-t border-white/10 pt-4">
+                <a href="mailto:diamondroofrestorations@protonmail.com" className="flex items-center text-ghost/80 text-[12px] group hover:text-white transition-colors">
+                  <div className="w-8 h-8 rounded-full bg-white/5 flex flex-shrink-0 items-center justify-center mr-3 border border-white/10 group-hover:border-cyan transition-colors">
+                    <Mail className="w-3.5 h-3.5 text-cyan" />
+                  </div>
+                  <span className="truncate">diamondroofrestorations@protonmail.com</span>
+                </a>
+                <div className="flex items-start text-ghost/80 text-[12px]">
+                  <div className="w-8 h-8 rounded-full bg-white/5 flex flex-shrink-0 items-center justify-center mr-3 border border-white/10 mt-1">
+                    <MapPin className="w-3.5 h-3.5 text-cyan" />
+                  </div>
+                  <div className="leading-relaxed">
+                    <strong className="text-white">Diamond Roof Restorations</strong><br/>
+                    133 W Cherry St Suite 204<br/>
+                    Jesup, GA 31545
+                  </div>
+                </div>
+              </div>
 
               <button 
                 onClick={() => setIsMenuOpen(false)}
