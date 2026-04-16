@@ -77,6 +77,7 @@ export function Header({ splashDone = false }: { splashDone?: boolean }) {
         {/* Mobile Logo — fades in once splash is fully gone */}
         <div className="md:hidden flex-shrink-0 z-50">
           <motion.img 
+            id="header-logo-mobile"
             src="/diamondrooflogo.webp" 
             alt="Diamond Roof Restoration" 
             className={`w-auto drop-shadow-[0_0_15px_rgba(64,145,177,0.3)] transition-[height] duration-500 ${
@@ -84,7 +85,7 @@ export function Header({ splashDone = false }: { splashDone?: boolean }) {
             }`}
             initial={{ opacity: 0 }}
             animate={{ opacity: splashDone ? 1 : 0 }}
-            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
           />
         </div>
 
@@ -164,6 +165,7 @@ export function Header({ splashDone = false }: { splashDone?: boolean }) {
             {/* Desktop Logo — fades in once splash is fully gone */}
             <a href="#">
               <motion.img 
+                id="header-logo-desktop"
                 src="/diamondrooflogo.webp" 
                 alt="Diamond Roof Restoration" 
                 whileHover={{ scale: 1.05 }}
@@ -172,7 +174,7 @@ export function Header({ splashDone = false }: { splashDone?: boolean }) {
                 } w-auto`}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: splashDone ? 1 : 0 }}
-                transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
+                transition={{ duration: 0.3, ease: 'easeOut' }}
               />
             </a>
           </div>
