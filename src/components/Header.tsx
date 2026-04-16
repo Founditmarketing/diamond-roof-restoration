@@ -1,11 +1,58 @@
 import { useState, useEffect } from 'react';
-import { Phone, Menu, X, Facebook, Instagram, MapPin, Mail } from 'lucide-react';
+import { Phone, Menu, X, Facebook, Instagram, MapPin, Mail, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+
+const navItems = {
+  left: [
+    { name: 'Home', link: '#' },
+    { 
+      name: 'Services', 
+      link: '#',
+      dropdown: [
+        { name: 'Roofing Contractor', link: '#roofing-contractor' },
+        { name: 'Metal Roof Installation', link: '#metal-roof-installation' },
+        { name: 'Asphalt Shingle Roof Installation', link: '#asphalt-shingle-roof-installation' },
+        { name: 'Membrane Roofing Installation', link: '#membrane-roofing-installation' },
+        { name: 'Single Ply Roofing Installation', link: '#single-ply-roofing-installation' },
+        { name: 'Fabric Reinforced Roofing Installation', link: '#fabric-reinforced-roofing-installation' },
+        { name: 'Commercial Roof Waterproofing', link: '#commercial-roof-waterproofing' },
+        { name: 'Spray Foam Roofing Installation', link: '#spray-foam-roofing-installation' },
+        { name: 'TPO', link: '#tpo' }
+      ]
+    }
+  ],
+  right: [
+    {
+      name: 'Service Areas',
+      link: '#',
+      dropdown: [
+        { name: 'Baxley, GA', link: '#baxley-ga' },
+        { name: 'Blackshear, GA', link: '#blackshear-ga' },
+        { name: 'Brunswick, GA', link: '#brunswick-ga' },
+        { name: 'Hilton Head, SC', link: '#hilton-head-sc' },
+        { name: 'Hinesville, GA', link: '#hinesville-ga' },
+        { name: 'Jacksonville, FL', link: '#jacksonville-fl' },
+        { name: 'Jesup, GA', link: '#jesup-ga' },
+        { name: 'Pooler, GA', link: '#pooler-ga' }
+      ]
+    },
+    {
+      name: 'About Us',
+      link: '#',
+      dropdown: [
+        { name: 'About', link: '#about' },
+        { name: 'Projects', link: '#proof' },
+        { name: 'Contact Us', link: '#contact' }
+      ]
+    }
+  ]
+};
 
 export function Header() {
   const [scrollY, setScrollY] = useState(0);
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [mobileExpandedDropdown, setMobileExpandedDropdown] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -80,15 +127,31 @@ export function Header() {
               </a>
             </div>
             
-            {['Services', 'Commercial'].map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase().replace(' ', '-')}`}
-                className="text-white hover:text-cyan text-[12px] lg:text-[13px] font-bold tracking-[1.5px] uppercase relative group transition-colors"
-              >
-                {item}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan transition-all duration-300 group-hover:w-full"></span>
-              </a>
+            {navItems.left.map((item) => (
+              <div key={item.name} className="relative group">
+                <a
+                  href={item.link || '#'}
+                  className="text-white hover:text-cyan text-[12px] lg:text-[13px] font-bold tracking-[1.5px] uppercase relative flex items-center transition-colors py-4"
+                >
+                  {item.name}
+                  {item.dropdown && <ChevronDown className="ml-1 w-3.5 h-3.5 group-hover:rotate-180 transition-transform duration-300" />}
+                  <span className="absolute bottom-3 left-0 w-0 h-0.5 bg-cyan transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                
+                {item.dropdown && (
+                  <div className="absolute top-[80%] left-0 w-[280px] bg-navy/95 backdrop-blur-3xl border border-cyan/20 shadow-2xl rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 z-50">
+                    <ul className="py-2">
+                      {item.dropdown.map((sub, idx) => (
+                        <li key={idx}>
+                          <a href={sub.link} className="block px-6 py-3 text-[10px] lg:text-[11px] text-white hover:text-cyan hover:bg-white/5 transition-colors uppercase tracking-[2px] leading-relaxed border-b border-white/5 last:border-0">
+                            {sub.name}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
             ))}
           </div>
 
@@ -114,15 +177,31 @@ export function Header() {
 
           {/* Right Side */}
           <div className={`flex-1 flex items-center justify-start pl-6 lg:pl-8 xl:pl-12 gap-4 lg:gap-8 transition-all duration-300 ${scrolled ? 'pt-0' : 'pt-3 lg:pt-5'}`}>
-            {['Residential', 'About Us'].map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase().replace(' ', '-')}`}
-                className="text-white hover:text-cyan text-[12px] lg:text-[13px] font-bold tracking-[1.5px] uppercase relative group transition-colors"
-              >
-                {item}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan transition-all duration-300 group-hover:w-full"></span>
-              </a>
+            {navItems.right.map((item) => (
+              <div key={item.name} className="relative group">
+                <a
+                  href={item.link || '#'}
+                  className="text-white hover:text-cyan text-[12px] lg:text-[13px] font-bold tracking-[1.5px] uppercase relative flex items-center transition-colors py-4"
+                >
+                  {item.name}
+                  {item.dropdown && <ChevronDown className="ml-1 w-3.5 h-3.5 group-hover:rotate-180 transition-transform duration-300" />}
+                  <span className="absolute bottom-3 left-0 w-0 h-0.5 bg-cyan transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                
+                {item.dropdown && (
+                  <div className="absolute top-[80%] left-0 w-[240px] bg-navy/95 backdrop-blur-3xl border border-cyan/20 shadow-2xl rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 z-50">
+                    <ul className="py-2">
+                      {item.dropdown.map((sub, idx) => (
+                        <li key={idx}>
+                          <a href={sub.link} className="block px-6 py-3 text-[10px] lg:text-[11px] text-white hover:text-cyan hover:bg-white/5 transition-colors uppercase tracking-[2px] leading-relaxed border-b border-white/5 last:border-0">
+                            {sub.name}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
             ))}
 
             {/* CTA Button Added */}
@@ -145,15 +224,51 @@ export function Header() {
             className="fixed inset-0 w-full h-[100dvh] bg-navy/98 backdrop-blur-3xl border-l border-white/5 overflow-y-auto md:hidden shadow-2xl z-[-1] pt-28 pb-8"
           >
             <div className="flex flex-col px-6 py-8 space-y-6">
-              {['Services', 'Commercial', 'Residential', 'About Us'].map((item) => (
-                <a
-                  key={item}
-                  onClick={() => setIsMenuOpen(false)}
-                  href={`#${item.toLowerCase().replace(' ', '-')}`}
-                  className="text-white hover:text-cyan text-lg font-bold tracking-[2px] uppercase transition-colors"
-                >
-                  {item}
-                </a>
+              {[...navItems.left, ...navItems.right].map((item) => (
+                <div key={item.name} className="flex flex-col border-b border-white/5 pb-4 last:border-0 last:pb-0">
+                  {item.dropdown ? (
+                    <>
+                      <button
+                        onClick={() => setMobileExpandedDropdown(mobileExpandedDropdown === item.name ? null : item.name)}
+                        className="flex items-center justify-between text-white hover:text-cyan text-base font-bold tracking-[2px] uppercase transition-colors w-full text-left"
+                      >
+                        {item.name}
+                        <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${mobileExpandedDropdown === item.name ? 'rotate-180 text-cyan' : 'text-white/50'}`} />
+                      </button>
+                      <AnimatePresence>
+                        {mobileExpandedDropdown === item.name && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            className="overflow-hidden"
+                          >
+                            <div className="flex flex-col space-y-4 pt-4 pl-4 border-l border-white/10 mt-2">
+                              {item.dropdown.map((sub, idx) => (
+                                <a
+                                  key={idx}
+                                  onClick={() => setIsMenuOpen(false)}
+                                  href={sub.link}
+                                  className="text-ghost text-sm hover:text-cyan uppercase tracking-widest font-semibold transition-colors leading-[1.4]"
+                                >
+                                  {sub.name}
+                                </a>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </>
+                  ) : (
+                    <a
+                      onClick={() => setIsMenuOpen(false)}
+                      href={item.link || '#'}
+                      className="text-white hover:text-cyan text-base font-bold tracking-[2px] uppercase transition-colors"
+                    >
+                      {item.name}
+                    </a>
+                  )}
+                </div>
               ))}
               
               <div className="h-px w-full bg-white/10 my-4"></div>
