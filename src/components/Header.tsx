@@ -54,8 +54,8 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mobileExpandedDropdown, setMobileExpandedDropdown] = useState<string | null>(null);
   
-  // Track mobile viewport for Framer Motion layout routing
-  const [isMobile, setIsMobile] = useState(false);
+  // Track mobile viewport for Framer Motion layout routing synchronously
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' ? window.innerWidth < 768 : false);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);

@@ -54,7 +54,7 @@ export default function App() {
             className="fixed inset-0 z-[9999] flex items-center justify-center p-6 pointer-events-none"
           >
             <motion.img 
-              layoutId={isMobile ? "main-logo-mobile" : "main-logo"}
+              layoutId="main-logo"
               transition={{ layout: { duration: 1.5, ease: [0.22, 1, 0.36, 1] } }}
               src="/diamondrooflogo.webp"
               alt="Diamond Roof Restoration"
