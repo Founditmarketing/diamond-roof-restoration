@@ -25,17 +25,17 @@ const allProjects = [
   {
     id: 'r1',
     category: 'residential',
-    image: '/diamondroofgallery15.jpg',
+    image: '/diamondroofresidential1.jpg',
   },
   {
     id: 'r2',
     category: 'residential',
-    image: '/diamondroofgallery17.jpg',
+    image: '/diamondroofresidential2.jpg',
   },
   {
     id: 'r3',
     category: 'residential',
-    image: '/diamondroofgallery.jpg',
+    image: '/diamondroofresidential3.jpg',
   }
 ];
 
