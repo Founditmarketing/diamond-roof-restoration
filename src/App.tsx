@@ -48,21 +48,12 @@ export default function App() {
           <motion.div 
             className="fixed inset-0 z-[9999] flex items-center justify-center p-6 pointer-events-none"
           >
-            {/* Mobile Tracking Variant */}
             <motion.img 
-              layoutId="main-logo-mobile"
+              layoutId="main-logo"
               transition={{ layout: { duration: 1.5, ease: [0.22, 1, 0.36, 1] } }}
               src="/diamondrooflogo.webp"
               alt="Diamond Roof Restoration"
-              className="w-48 relative z-10 md:hidden"
-            />
-            {/* Desktop Tracking Variant */}
-            <motion.img 
-              layoutId="main-logo-desktop"
-              transition={{ layout: { duration: 1.5, ease: [0.22, 1, 0.36, 1] } }}
-              src="/diamondrooflogo.webp"
-              alt="Diamond Roof Restoration"
-              className="w-64 relative z-10 hidden md:block"
+              className="w-48 md:w-64 relative z-10"
             />
           </motion.div>
         )}

@@ -54,6 +54,17 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mobileExpandedDropdown, setMobileExpandedDropdown] = useState<string | null>(null);
 
+  // Use matchMedia to rigidly map viewport logic to Tailwind's 'md' breakpoint natively
+  const [isMobile, setIsMobile] = useState(() => 
+    typeof window !== 'undefined' ? window.matchMedia('(max-width: 767px)').matches : false
+  );
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.matchMedia('(max-width: 767px)').matches);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
@@ -77,7 +88,7 @@ export function Header() {
         {/* Mobile Logo */}
         <div className="md:hidden flex-shrink-0 z-50">
           <motion.img 
-            layoutId="main-logo-mobile"
+            layoutId={isMobile ? "main-logo" : undefined}
             transition={{ layout: { duration: 1.5, ease: [0.22, 1, 0.36, 1] } }}
             src="/diamondrooflogo.webp" 
             alt="Diamond Roof Restoration" 
@@ -163,7 +174,7 @@ export function Header() {
             {/* The Logo image, shrinking significantly when scrolled */}
             <a href="#">
               <motion.img 
-                layoutId="main-logo-desktop"
+                layoutId={!isMobile ? "main-logo" : undefined}
                 whileHover={{ scale: 1.05 }}
                 transition={{ layout: { duration: 1.5, ease: [0.22, 1, 0.36, 1] } }}
                 src="/diamondrooflogo.webp" 
