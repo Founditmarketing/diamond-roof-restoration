@@ -48,21 +48,11 @@ const navItems = {
   ]
 };
 
-export function Header() {
+export function Header({ splashDone = false }: { splashDone?: boolean }) {
   const [scrollY, setScrollY] = useState(0);
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mobileExpandedDropdown, setMobileExpandedDropdown] = useState<string | null>(null);
-
-  const [isMobile, setIsMobile] = useState(() => 
-    typeof window !== 'undefined' ? window.matchMedia('(max-width: 767px)').matches : false
-  );
-
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.matchMedia('(max-width: 767px)').matches);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -84,19 +74,18 @@ export function Header() {
     >
       <div className="w-full px-4 lg:px-8 xl:px-12 relative flex items-center justify-between md:justify-center">
         
-        {/* Mobile Logo */}
+        {/* Mobile Logo — fades in once splash is fully gone */}
         <div className="md:hidden flex-shrink-0 z-50">
-          {isMobile && (
-            <motion.img 
-              layoutId="main-logo-mobile"
-            transition={{ layout: { duration: 1.5, ease: [0.22, 1, 0.36, 1] } }}
+          <motion.img 
             src="/diamondrooflogo.webp" 
             alt="Diamond Roof Restoration" 
             className={`w-auto drop-shadow-[0_0_15px_rgba(64,145,177,0.3)] transition-[height] duration-500 ${
               scrolled ? 'h-12' : 'h-20'
             }`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: splashDone ? 1 : 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
           />
-          )}
         </div>
 
         {/* Mobile Socials & Menu Button */}
@@ -172,20 +161,19 @@ export function Header() {
             {/* Logo Glow Effect */}
             <div className={`absolute inset-0 bg-cyan blur-[40px] opacity-20 scale-150 rounded-full group-hover:opacity-40 transition-opacity duration-500 pointer-events-none ${scrolled ? 'hidden' : 'block'}`}></div>
             
-            {/* The Logo image, shrinking significantly when scrolled */}
+            {/* Desktop Logo — fades in once splash is fully gone */}
             <a href="#">
-              {!isMobile && (
-                <motion.img 
-                  layoutId="main-logo-desktop"
-                whileHover={{ scale: 1.05 }}
-                transition={{ layout: { duration: 1.5, ease: [0.22, 1, 0.36, 1] } }}
+              <motion.img 
                 src="/diamondrooflogo.webp" 
                 alt="Diamond Roof Restoration" 
+                whileHover={{ scale: 1.05 }}
                 className={`relative z-10 drop-shadow-[0_0_15px_rgba(64,145,177,0.3)] transition-[height] duration-500 ${
                   scrolled ? 'h-14 lg:h-16' : 'h-28 lg:h-36'
                 } w-auto`}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: splashDone ? 1 : 0 }}
+                transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
               />
-              )}
             </a>
           </div>
 

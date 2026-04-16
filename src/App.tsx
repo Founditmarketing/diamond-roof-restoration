@@ -14,76 +14,45 @@ import { Footer } from './components/Footer';
 import { FloatingWidget } from './components/FloatingWidget';
 
 export default function App() {
+  // phase 0 = splash visible, phase 1 = splash gone
   const [phase, setPhase] = useState(0);
-  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' ? window.matchMedia('(max-width: 767px)').matches : false);
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.matchMedia('(max-width: 767px)').matches);
-    window.addEventListener('resize', handleResize);
-    
-    // Phase 1: Logo flies to header, Background dissolves simultaneously
-    const timer1 = setTimeout(() => {
-      setPhase(1);
-    }, 1500);
-    
-    return () => {
-      clearTimeout(timer1);
-      window.removeEventListener('resize', handleResize);
-    };
+    const timer = setTimeout(() => setPhase(1), 1800);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
     <div className="min-h-screen bg-navy text-white selection:bg-cyan selection:text-white">
-      
-      {/* Background Dissolve Overlay */}
-      <AnimatePresence>
-        {phase === 0 && (
-          <motion.div 
-            className="fixed inset-0 z-[9998] bg-navy"
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-          />
-        )}
-      </AnimatePresence>
 
-      {/* Centered Splash Logo */}
+      {/* Splash Screen — completely self-contained, just fades out, no layoutId */}
       <AnimatePresence>
         {phase === 0 && (
-          <motion.div 
-            className="fixed inset-0 z-[9999] flex items-center justify-center p-6 pointer-events-none"
+          <motion.div
+            key="splash"
+            className="fixed inset-0 z-[9999] bg-[#0a1628] flex items-center justify-center"
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 1.0, ease: 'easeInOut' }}
           >
-            {isMobile ? (
-              <motion.img 
-                layoutId="main-logo-mobile"
-                transition={{ layout: { duration: 1.5, ease: [0.22, 1, 0.36, 1] } }}
-                src="/diamondrooflogo.webp"
-                alt="Diamond Roof Restoration Mobile"
-                className="w-48 relative z-10"
-              />
-            ) : (
-              <motion.img 
-                layoutId="main-logo-desktop"
-                transition={{ layout: { duration: 1.5, ease: [0.22, 1, 0.36, 1] } }}
-                src="/diamondrooflogo.webp"
-                alt="Diamond Roof Restoration Desktop"
-                className="w-64 relative z-10"
-              />
-            )}
+            <motion.img
+              src="/diamondrooflogo.webp"
+              alt="Diamond Roof Restoration"
+              className="w-44 sm:w-56"
+              initial={{ opacity: 0, scale: 0.85 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            />
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Header (Mounted at Phase 1 to trigger layoutId flight) */}
-      {phase >= 1 && (
-        <div className="relative z-[10000]">
-          <AnnouncementBar />
-          <Header />
-        </div>
-      )}
+      {/* Header — logo fades in independently with no shared element tracking */}
+      <div className="relative z-[10000]">
+        <AnnouncementBar />
+        <Header splashDone={phase >= 1} />
+      </div>
 
-      {/* Underlying UI (Mounted immediately to resolve entrance animations under curtain) */}
+      {/* Main content */}
       <main>
         <Hero />
         <TrustBanner />
