@@ -6,7 +6,7 @@ const navItems = {
   left: [
     { name: 'Home', link: '#' },
     { 
-      name: 'Services', 
+      name: 'Our Services', 
       link: '#',
       dropdown: [
         { name: 'Roofing Contractor', link: '#roofing-contractor' },
@@ -37,7 +37,7 @@ const navItems = {
       ]
     },
     {
-      name: 'About Us',
+      name: 'About',
       link: '#',
       dropdown: [
         { name: 'About', link: '#about' },
