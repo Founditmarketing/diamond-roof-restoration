@@ -56,7 +56,7 @@ export function TrustBanner() {
         <div className="flex flex-row flex-wrap items-center justify-center md:justify-between gap-x-8 gap-y-6 md:gap-4 lg:gap-8 w-full">
           
           {/* Stat 1 */}
-          <div className="flex items-center gap-2 md:gap-4 group">
+          <div className="hidden md:flex items-center gap-2 md:gap-4 group">
             <div className="text-[28px] md:text-[36px] lg:text-[44px] font-display font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70 flex items-center group-hover:scale-105 transition-transform duration-500">
               {isInView ? <CountUp end={500} duration={2.5} easingFn={(t, b, c, d) => c * (t /= d) * t * t + b} /> : '0'}
               <span className="text-cyan ml-1 text-[20px] md:text-[24px] lg:text-[32px]">+</span>
@@ -67,7 +67,7 @@ export function TrustBanner() {
           <div className="hidden md:block w-px h-10 lg:h-12 bg-gradient-to-b from-transparent via-cyan/20 to-transparent"></div>
 
           {/* Stat 2 */}
-          <div className="flex items-center gap-2 md:gap-4 group">
+          <div className="hidden md:flex items-center gap-2 md:gap-4 group">
             <div className="text-[28px] md:text-[36px] lg:text-[44px] font-display font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70 flex items-center group-hover:scale-105 transition-transform duration-500">
               {isInView ? <CountUp end={120} duration={2.5} easingFn={(t, b, c, d) => c * (t /= d) * t * t + b} /> : '0'}
               <span className="text-cyan ml-1 text-[20px] md:text-[24px] lg:text-[32px]">+</span>
