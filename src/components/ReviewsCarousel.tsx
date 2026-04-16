@@ -130,7 +130,7 @@ export function ReviewsCarousel() {
                     if (isRight) next();
                   }}
                 >
-                  <div className={`h-[380px] md:h-[350px] bg-navy border rounded-2xl p-8 flex flex-col relative transition-colors duration-500 ${
+                  <div className={`h-[420px] md:h-[350px] bg-navy border rounded-2xl p-6 pb-10 md:p-8 flex flex-col relative transition-colors duration-500 ${
                     isCenter 
                       ? 'border-cyan/50 shadow-[0_20px_50px_rgba(64,145,177,0.2)] bg-white/10' 
                       : 'border-white/10 shadow-xl bg-white/5'
@@ -143,7 +143,7 @@ export function ReviewsCarousel() {
                       ))}
                     </div>
                     
-                    <blockquote className={`text-lg mb-8 flex-grow leading-relaxed relative z-10 transition-colors duration-500 ${isCenter ? 'text-white' : 'text-ghost/70'}`}>
+                    <blockquote className={`text-base md:text-lg mb-6 md:mb-8 flex-grow leading-relaxed relative z-10 transition-colors duration-500 ${isCenter ? 'text-white' : 'text-ghost/70'}`}>
                       "{review.text}"
                     </blockquote>
                     

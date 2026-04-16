@@ -53,6 +53,16 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mobileExpandedDropdown, setMobileExpandedDropdown] = useState<string | null>(null);
+  
+  // Track mobile viewport for Framer Motion layout routing
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -77,7 +87,7 @@ export function Header() {
         {/* Mobile Logo */}
         <div className="md:hidden flex-shrink-0 z-50">
           <motion.img 
-            layoutId="main-logo-mobile"
+            layoutId={isMobile ? "main-logo" : undefined}
             transition={{ layout: { duration: 1.5, ease: [0.22, 1, 0.36, 1] } }}
             src="/diamondrooflogo.webp" 
             alt="Diamond Roof Restoration" 
@@ -163,7 +173,7 @@ export function Header() {
             {/* The Logo image, shrinking significantly when scrolled */}
             <a href="#">
               <motion.img 
-                layoutId="main-logo"
+                layoutId={!isMobile ? "main-logo" : undefined}
                 whileHover={{ scale: 1.05 }}
                 transition={{ layout: { duration: 1.5, ease: [0.22, 1, 0.36, 1] } }}
                 src="/diamondrooflogo.webp" 
