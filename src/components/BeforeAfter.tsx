@@ -71,12 +71,12 @@ export function BeforeAfter() {
           </div>
           
           {/* Filter */}
-          <div className="flex bg-white/5 p-1 rounded-lg self-start md:self-end border border-white/10 overflow-x-auto max-w-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+          <div className="flex bg-white/5 p-1 rounded-lg self-start md:self-end border border-white/10 overflow-x-auto w-full md:w-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {['all', 'commercial', 'residential'].map(f => (
               <button
                 key={f}
                 onClick={() => setFilter(f as any)}
-                className={`px-6 py-2.5 rounded-md text-sm font-semibold transition-all uppercase tracking-wider whitespace-nowrap ${
+                className={`flex-1 md:flex-none px-3 md:px-6 py-2.5 rounded-md text-[11px] md:text-sm font-semibold transition-all uppercase tracking-wide md:tracking-wider whitespace-nowrap ${
                   filter === f ? 'bg-cyan text-white shadow-sm' : 'text-ghost/60 hover:text-white'
                 }`}
               >
@@ -88,7 +88,7 @@ export function BeforeAfter() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* Spotlit Image */}
-          <div className="lg:col-span-8 h-[400px] md:h-[500px] lg:h-full relative rounded-2xl overflow-hidden border border-cyan/30 shadow-[0_40px_100px_rgba(0,0,0,0.5)] group">
+          <div className="lg:col-span-8 h-[280px] md:h-[450px] lg:h-[600px] relative rounded-2xl overflow-hidden border border-cyan/30 shadow-[0_40px_100px_rgba(0,0,0,0.5)] group">
             <AnimatePresence mode="wait">
               <motion.img
                 key={spotlitProject.id}
