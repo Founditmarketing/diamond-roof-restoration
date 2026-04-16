@@ -147,16 +147,9 @@ export function ReviewsCarousel() {
                       "{review.text}"
                     </blockquote>
                     
-                    <div className="flex items-center gap-4 mt-auto relative z-10">
-                      <img 
-                        src={review.avatar} 
-                        alt={review.name} 
-                        className={`w-12 h-12 rounded-full object-cover border-2 transition-colors duration-500 ${isCenter ? 'border-cyan' : 'border-white/10'}`}
-                      />
-                      <div>
-                        <div className="font-bold uppercase tracking-wider text-white">{review.name}</div>
-                        <div className="text-cyan text-[10px] font-bold uppercase tracking-widest mt-1">{review.role}</div>
-                      </div>
+                    <div className="flex flex-col mt-auto relative z-10">
+                      <div className="font-bold uppercase tracking-wider text-white">{review.name}</div>
+                      <div className="text-cyan text-[10px] font-bold uppercase tracking-widest mt-1">{review.role}</div>
                     </div>
                   </div>
                 </motion.div>
