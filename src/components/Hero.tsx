@@ -143,7 +143,7 @@ export function Hero() {
                     <ArrowLeft className="w-4 h-4" /> Back
                   </button>
                 )}
-                {step === 1 && !isSuccess && <div className="text-[11px] md:text-xs text-cyan font-extrabold uppercase tracking-[2px]">Instant Estimate</div>}
+                {step === 1 && !isSuccess && <div className="text-[11px] md:text-xs text-cyan font-extrabold uppercase tracking-[2px]">Let us help you get started!</div>}
                 
                 {!isSuccess && (
                   <div className="text-ghost text-[11px] md:text-xs font-extrabold tracking-[2px]">
