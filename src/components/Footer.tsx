@@ -7,11 +7,11 @@ export function Footer() {
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <pattern id="topo" width="100" height="100" patternUnits="userSpaceOnUse">
-              <path d="M0 100 Q 25 50 50 100 T 100 100 M0 80 Q 25 30 50 80 T 100 80 M0 60 Q 25 10 50 60 T 100 60" fill="none" stroke="white" strokeWidth="0.5"/>
+            <pattern id="diamond-grid" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="1"/>
             </pattern>
           </defs>
-          <rect width="100%" height="100%" fill="url(#topo)" />
+          <rect width="100%" height="100%" fill="url(#diamond-grid)" />
         </svg>
       </div>
 
