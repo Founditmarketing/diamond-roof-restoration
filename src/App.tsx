@@ -15,8 +15,11 @@ import { FloatingWidget } from './components/FloatingWidget';
 
 export default function App() {
   const [phase, setPhase] = useState(0);
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' ? window.matchMedia('(max-width: 767px)').matches : false);
 
   useEffect(() => {
+    const handleResize = () => setIsMobile(window.matchMedia('(max-width: 767px)').matches);
+    window.addEventListener('resize', handleResize);
     
     // Phase 1: Logo flies to header, Background dissolves simultaneously
     const timer1 = setTimeout(() => {
@@ -25,6 +28,7 @@ export default function App() {
     
     return () => {
       clearTimeout(timer1);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -47,9 +51,11 @@ export default function App() {
         {phase === 0 && (
           <motion.div 
             className="fixed inset-0 z-[9999] flex items-center justify-center p-6 pointer-events-none"
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
           >
             <motion.img 
-              layoutId="main-logo"
+              layoutId={isMobile ? "main-logo-mobile" : "main-logo-desktop"}
               transition={{ layout: { duration: 1.5, ease: [0.22, 1, 0.36, 1] } }}
               src="/diamondrooflogo.webp"
               alt="Diamond Roof Restoration"
