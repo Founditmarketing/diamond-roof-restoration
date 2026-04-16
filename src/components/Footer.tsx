@@ -3,18 +3,6 @@ import { Facebook, Instagram, MapPin } from 'lucide-react';
 export function Footer() {
   return (
     <footer className="bg-navy pt-20 pb-10 border-t border-cyan/30 relative overflow-hidden">
-      {/* Subtle geometric pattern */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none">
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="diamond-grid" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="1"/>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#diamond-grid)" />
-        </svg>
-      </div>
-
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           
