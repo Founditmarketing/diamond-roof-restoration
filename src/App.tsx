@@ -15,12 +15,8 @@ import { FloatingWidget } from './components/FloatingWidget';
 
 export default function App() {
   const [phase, setPhase] = useState(0);
-  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' ? window.innerWidth < 768 : false);
 
   useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener('resize', handleResize);
     
     // Phase 1: Logo flies to header, Background dissolves simultaneously
     const timer1 = setTimeout(() => {
@@ -29,7 +25,6 @@ export default function App() {
     
     return () => {
       clearTimeout(timer1);
-      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -53,12 +48,21 @@ export default function App() {
           <motion.div 
             className="fixed inset-0 z-[9999] flex items-center justify-center p-6 pointer-events-none"
           >
+            {/* Mobile Tracking Variant */}
             <motion.img 
-              layoutId="main-logo"
+              layoutId="main-logo-mobile"
               transition={{ layout: { duration: 1.5, ease: [0.22, 1, 0.36, 1] } }}
               src="/diamondrooflogo.webp"
               alt="Diamond Roof Restoration"
-              className="w-48 md:w-64 relative z-10"
+              className="w-48 relative z-10 md:hidden"
+            />
+            {/* Desktop Tracking Variant */}
+            <motion.img 
+              layoutId="main-logo-desktop"
+              transition={{ layout: { duration: 1.5, ease: [0.22, 1, 0.36, 1] } }}
+              src="/diamondrooflogo.webp"
+              alt="Diamond Roof Restoration"
+              className="w-64 relative z-10 hidden md:block"
             />
           </motion.div>
         )}
