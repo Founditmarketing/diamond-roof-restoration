@@ -54,13 +54,23 @@ export default function App() {
             exit={{ opacity: 0 }}
             transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
           >
-            <motion.img 
-              layoutId={isMobile ? "main-logo-mobile" : "main-logo-desktop"}
-              transition={{ layout: { duration: 1.5, ease: [0.22, 1, 0.36, 1] } }}
-              src="/diamondrooflogo.webp"
-              alt="Diamond Roof Restoration"
-              className="w-48 md:w-64 relative z-10"
-            />
+            {isMobile ? (
+              <motion.img 
+                layoutId="main-logo-mobile"
+                transition={{ layout: { duration: 1.5, ease: [0.22, 1, 0.36, 1] } }}
+                src="/diamondrooflogo.webp"
+                alt="Diamond Roof Restoration Mobile"
+                className="w-48 relative z-10"
+              />
+            ) : (
+              <motion.img 
+                layoutId="main-logo-desktop"
+                transition={{ layout: { duration: 1.5, ease: [0.22, 1, 0.36, 1] } }}
+                src="/diamondrooflogo.webp"
+                alt="Diamond Roof Restoration Desktop"
+                className="w-64 relative z-10"
+              />
+            )}
           </motion.div>
         )}
       </AnimatePresence>
