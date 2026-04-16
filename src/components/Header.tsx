@@ -138,11 +138,11 @@ export function Header() {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: '100vh' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="absolute top-full left-0 right-0 w-full bg-navy/95 backdrop-blur-3xl border-b border-cyan/20 overflow-y-auto md:hidden shadow-[0_40px_100px_rgba(0,0,0,0.8)]"
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 w-full h-[100dvh] bg-navy/98 backdrop-blur-3xl border-l border-white/5 overflow-y-auto md:hidden shadow-2xl z-[-1] pt-28 pb-8"
           >
             <div className="flex flex-col px-6 py-8 space-y-6">
               {['Services', 'Commercial', 'Residential', 'About Us'].map((item) => (
