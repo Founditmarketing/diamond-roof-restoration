@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Check, ChevronDown, Building2, Home, ArrowLeft, ArrowRight, Cog, HardHat, ShieldCheck, ClipboardCheck } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export function Hero() {
   const [step, setStep] = useState(1);
@@ -348,6 +349,18 @@ export function Hero() {
                           placeholder="(555) 000-0000"
                           className="w-full bg-black/30 border-2 border-white/20 rounded-xl px-5 py-4 text-white placeholder:text-white/30 focus:outline-none focus:border-cyan focus:bg-cyan/5 transition-all text-base md:text-lg font-bold"
                         />
+                      </div>
+
+                      <div className="flex items-start gap-3 mt-2 mb-2">
+                        <input 
+                          type="checkbox" 
+                          id="consent-hero" 
+                          required
+                          className="mt-0.5 flex-shrink-0 w-4 h-4 rounded appearance-none border border-white/20 bg-white/5 checked:bg-cyan checked:border-cyan relative cursor-pointer before:content-[''] before:absolute before:inset-0 before:flex before:items-center before:justify-center checked:before:content-['✓'] before:text-navy before:font-bold before:text-[10px] transition-colors"
+                        />
+                        <label htmlFor="consent-hero" className="text-[10px] text-ghost/70 leading-[1.4] cursor-pointer">
+                          I agree to the <Link to="/terms" className="text-cyan hover:underline">Terms &amp; Conditions</Link> provided by the company. By providing my phone number, I agree to receive text messages from the business. We respect your privacy - learn how we handle your data in our <Link to="/privacy" className="text-cyan hover:underline">Privacy Policy</Link>.
+                        </label>
                       </div>
 
                       <button

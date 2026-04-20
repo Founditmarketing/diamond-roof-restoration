@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Plus, Minus, Send, Phone } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const faqs = [
   {
@@ -157,6 +158,18 @@ export function FAQ() {
                     placeholder="Tell us about your roofing needs..."
                     className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-cyan transition-all resize-none"
                   ></textarea>
+                </div>
+
+                <div className="flex items-start gap-3 mt-1 mb-2">
+                  <input 
+                    type="checkbox" 
+                    id="consent-faq" 
+                    required
+                    className="mt-0.5 flex-shrink-0 w-4 h-4 rounded appearance-none border border-white/20 bg-white/5 checked:bg-cyan checked:border-cyan relative cursor-pointer before:content-[''] before:absolute before:inset-0 before:flex before:items-center before:justify-center checked:before:content-['✓'] before:text-navy before:font-bold before:text-[10px] transition-colors"
+                  />
+                  <label htmlFor="consent-faq" className="text-[9px] max-w-[90%] text-ghost/70 leading-[1.4] cursor-pointer block">
+                    I agree to the <Link to="/terms" className="text-cyan hover:underline">Terms &amp; Conditions</Link> provided by the company. By providing my phone number, I agree to receive text messages from the business. We respect your privacy - learn how we handle your data in our <Link to="/privacy" className="text-cyan hover:underline">Privacy Policy</Link>.
+                  </label>
                 </div>
 
                 <button

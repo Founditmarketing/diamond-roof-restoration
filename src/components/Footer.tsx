@@ -1,6 +1,22 @@
 import { Facebook, Instagram, MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export function Footer() {
+  const quickLinks = [
+    { name: 'Home', path: '/' },
+    { name: 'Projects', path: '/projects' },
+    { name: 'Service Areas', path: '/#locations' },
+    { name: 'About Us', path: '/about' },
+    { name: 'Contact', path: '/contact' },
+    { name: 'Review Us', path: '/#reviews' },
+  ];
+
+  const servicesLinks = [
+    { name: 'Roofing Contractor', path: '/services/roofing-contractor' },
+    { name: 'Metal Roof Installation', path: '/services/metal-roof-installation' },
+    { name: 'Asphalt Shingle Roof Installation', path: '/services/asphalt-shingle-roof-installation' }
+  ];
+
   return (
     <footer className="bg-navy pt-20 pb-10 border-t border-cyan/30 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
@@ -37,9 +53,9 @@ export function Footer() {
           <div>
             <h4 className="font-display font-bold text-[12px] uppercase tracking-widest text-white mb-6">Quick Links</h4>
             <ul className="space-y-3">
-              {['Home', 'Projects', 'Service Areas', 'About Us', 'Contact', 'Review Us'].map((link) => (
-                <li key={link}>
-                  <a href={`#${link.toLowerCase().replace(' ', '-')}`} className="text-ghost/60 hover:text-cyan text-[13px] transition-colors">{link}</a>
+              {quickLinks.map((link) => (
+                <li key={link.name}>
+                  <Link to={link.path} className="text-ghost/60 hover:text-cyan text-[13px] transition-colors">{link.name}</Link>
                 </li>
               ))}
             </ul>
@@ -49,9 +65,9 @@ export function Footer() {
           <div>
             <h4 className="font-display font-bold text-[12px] uppercase tracking-widest text-white mb-6">Our Services</h4>
             <ul className="space-y-3 mb-8">
-              {['Roofing Contractor', 'Metal Roof Installation', 'Asphalt Shingle Roof Installation'].map((link) => (
-                <li key={link}>
-                  <a href={`#${link.toLowerCase().replace(/ /g, '-')}`} className="text-ghost/60 hover:text-cyan text-[12px] transition-colors block">{link}</a>
+              {servicesLinks.map((link) => (
+                <li key={link.name}>
+                  <Link to={link.path} className="text-ghost/60 hover:text-cyan text-[12px] transition-colors block">{link.name}</Link>
                 </li>
               ))}
             </ul>
@@ -80,7 +96,7 @@ export function Footer() {
               <div className="text-ghost/70 text-[11px] leading-relaxed">
                 Baxley, GA &bull; Blackshear, GA &bull; Brunswick, GA &bull; Hilton Head, SC &bull; Hinesville, GA &bull; Jacksonville, FL &bull; Jesup, GA &bull; Pooler, GA
                 <div className="mt-2">
-                  <a href="#locations" className="text-cyan hover:text-white transition-colors uppercase font-bold text-[10px] tracking-wider">See All Service Areas →</a>
+                  <Link to="/#locations" className="text-cyan hover:text-white transition-colors uppercase font-bold text-[10px] tracking-wider">See All Service Areas →</Link>
                 </div>
               </div>
             </div>
@@ -92,8 +108,8 @@ export function Footer() {
             &copy; {new Date().getFullYear()} Diamond Roof Restoration. All rights reserved.
           </p>
           <div className="flex gap-6 text-[12px]">
-            <a href="#" className="text-ghost/40 hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="text-ghost/40 hover:text-white transition-colors">Terms of Service</a>
+            <Link to="/privacy" className="text-ghost/40 hover:text-white transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="text-ghost/40 hover:text-white transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>

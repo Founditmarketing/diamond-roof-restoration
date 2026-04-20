@@ -1,48 +1,49 @@
 import { useState, useEffect } from 'react';
 import { Phone, Menu, X, Facebook, Instagram, MapPin, Mail, ChevronDown } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 
 const navItems = {
   left: [
-    { name: 'Home', link: '#' },
+    { name: 'Home', link: '/' },
     { 
       name: 'Our Services', 
-      link: '#',
+      link: '/#',
       dropdown: [
-        { name: 'Roofing Contractor', link: '#roofing-contractor' },
-        { name: 'Metal Roof Installation', link: '#metal-roof-installation' },
-        { name: 'Asphalt Shingle Roof Installation', link: '#asphalt-shingle-roof-installation' },
-        { name: 'Membrane Roofing Installation', link: '#membrane-roofing-installation' },
-        { name: 'Single Ply Roofing Installation', link: '#single-ply-roofing-installation' },
-        { name: 'Fabric Reinforced Roofing Installation', link: '#fabric-reinforced-roofing-installation' },
-        { name: 'Commercial Roof Waterproofing', link: '#commercial-roof-waterproofing' },
-        { name: 'Spray Foam Roofing Installation', link: '#spray-foam-roofing-installation' },
-        { name: 'TPO', link: '#tpo' }
+        { name: 'Roofing Contractor', link: '/services/roofing-contractor' },
+        { name: 'Metal Roof Installation', link: '/services/metal-roof-installation' },
+        { name: 'Asphalt Shingle Roof Installation', link: '/services/asphalt-shingle-roof-installation' },
+        { name: 'Membrane Roofing Installation', link: '/services/membrane-roofing-installation' },
+        { name: 'Single Ply Roofing Installation', link: '/services/single-ply-roofing-installation' },
+        { name: 'Fabric Reinforced Roofing Installation', link: '/services/fabric-reinforced-roofing-installation' },
+        { name: 'Commercial Roof Waterproofing', link: '/services/commercial-roof-waterproofing' },
+        { name: 'Spray Foam Roofing Installation', link: '/services/spray-foam-roofing-installation' },
+        { name: 'TPO', link: '/services/tpo' }
       ]
     }
   ],
   right: [
     {
       name: 'Service Areas',
-      link: '#',
+      link: '/#',
       dropdown: [
-        { name: 'Baxley, GA', link: '#baxley-ga' },
-        { name: 'Blackshear, GA', link: '#blackshear-ga' },
-        { name: 'Brunswick, GA', link: '#brunswick-ga' },
-        { name: 'Hilton Head, SC', link: '#hilton-head-sc' },
-        { name: 'Hinesville, GA', link: '#hinesville-ga' },
-        { name: 'Jacksonville, FL', link: '#jacksonville-fl' },
-        { name: 'Jesup, GA', link: '#jesup-ga' },
-        { name: 'Pooler, GA', link: '#pooler-ga' }
+        { name: 'Baxley, GA', link: '/service-areas/baxley-ga' },
+        { name: 'Blackshear, GA', link: '/service-areas/blackshear-ga' },
+        { name: 'Brunswick, GA', link: '/service-areas/brunswick-ga' },
+        { name: 'Hilton Head, SC', link: '/service-areas/hilton-head-sc' },
+        { name: 'Hinesville, GA', link: '/service-areas/hinesville-ga' },
+        { name: 'Jacksonville, FL', link: '/service-areas/jacksonville-fl' },
+        { name: 'Jesup, GA', link: '/service-areas/jesup-ga' },
+        { name: 'Pooler, GA', link: '/service-areas/pooler-ga' }
       ]
     },
     {
       name: 'About',
-      link: '#',
+      link: '/#',
       dropdown: [
-        { name: 'About', link: '#about' },
-        { name: 'Projects', link: '#proof' },
-        { name: 'Contact Us', link: '#contact' }
+        { name: 'About', link: '/about' },
+        { name: 'Projects', link: '/projects' },
+        { name: 'Contact Us', link: '/contact' }
       ]
     }
   ]
@@ -131,23 +132,23 @@ export function Header({ splashDone = false }: { splashDone?: boolean }) {
             
             {navItems.left.map((item) => (
               <div key={item.name} className="relative group">
-                <a
-                  href={item.link || '#'}
+                <Link
+                  to={item.link || '/'}
                   className="text-white hover:text-cyan text-[12px] lg:text-[13px] font-bold tracking-[1.5px] uppercase relative flex items-center transition-colors py-4"
                 >
                   {item.name}
                   {item.dropdown && <ChevronDown className="ml-1 w-3.5 h-3.5 group-hover:rotate-180 transition-transform duration-300" />}
                   <span className="absolute bottom-3 left-0 w-0 h-0.5 bg-cyan transition-all duration-300 group-hover:w-full"></span>
-                </a>
+                </Link>
                 
                 {item.dropdown && (
                   <div className="absolute top-[80%] left-0 w-[280px] bg-navy/95 backdrop-blur-3xl border border-cyan/20 shadow-2xl rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 z-50">
                     <ul className="py-2">
                       {item.dropdown.map((sub, idx) => (
                         <li key={idx}>
-                          <a href={sub.link} className="block px-6 py-3 text-[10px] lg:text-[11px] text-white hover:text-cyan hover:bg-white/5 transition-colors uppercase tracking-[2px] leading-relaxed border-b border-white/5 last:border-0">
+                          <Link to={sub.link} className="block px-6 py-3 text-[10px] lg:text-[11px] text-white hover:text-cyan hover:bg-white/5 transition-colors uppercase tracking-[2px] leading-relaxed border-b border-white/5 last:border-0">
                             {sub.name}
-                          </a>
+                          </Link>
                         </li>
                       ))}
                     </ul>
@@ -163,7 +164,7 @@ export function Header({ splashDone = false }: { splashDone?: boolean }) {
             <div className={`absolute inset-0 bg-cyan blur-[40px] opacity-20 scale-150 rounded-full group-hover:opacity-40 transition-opacity duration-500 pointer-events-none ${scrolled ? 'hidden' : 'block'}`}></div>
             
             {/* Desktop Logo — fades in once splash is fully gone */}
-            <a href="#">
+            <Link to="/">
               <motion.img 
                 id="header-logo-desktop"
                 src="/diamondrooflogo.webp" 
@@ -176,30 +177,30 @@ export function Header({ splashDone = false }: { splashDone?: boolean }) {
                 animate={{ opacity: splashDone ? 1 : 0 }}
                 transition={{ duration: 0.3, ease: 'easeOut' }}
               />
-            </a>
+            </Link>
           </div>
 
           {/* Right Side */}
           <div className={`flex-1 flex items-center justify-start pl-6 lg:pl-8 xl:pl-12 gap-4 lg:gap-8 transition-all duration-300 ${scrolled ? 'pt-0' : 'pt-3 lg:pt-5'}`}>
             {navItems.right.map((item) => (
               <div key={item.name} className="relative group">
-                <a
-                  href={item.link || '#'}
+                <Link
+                  to={item.link || '/'}
                   className="text-white hover:text-cyan text-[12px] lg:text-[13px] font-bold tracking-[1.5px] uppercase relative flex items-center transition-colors py-4"
                 >
                   {item.name}
                   {item.dropdown && <ChevronDown className="ml-1 w-3.5 h-3.5 group-hover:rotate-180 transition-transform duration-300" />}
                   <span className="absolute bottom-3 left-0 w-0 h-0.5 bg-cyan transition-all duration-300 group-hover:w-full"></span>
-                </a>
+                </Link>
                 
                 {item.dropdown && (
                   <div className="absolute top-[80%] left-0 w-[240px] bg-navy/95 backdrop-blur-3xl border border-cyan/20 shadow-2xl rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 z-50">
                     <ul className="py-2">
                       {item.dropdown.map((sub, idx) => (
                         <li key={idx}>
-                          <a href={sub.link} className="block px-6 py-3 text-[10px] lg:text-[11px] text-white hover:text-cyan hover:bg-white/5 transition-colors uppercase tracking-[2px] leading-relaxed border-b border-white/5 last:border-0">
+                          <Link to={sub.link} className="block px-6 py-3 text-[10px] lg:text-[11px] text-white hover:text-cyan hover:bg-white/5 transition-colors uppercase tracking-[2px] leading-relaxed border-b border-white/5 last:border-0">
                             {sub.name}
-                          </a>
+                          </Link>
                         </li>
                       ))}
                     </ul>
@@ -209,9 +210,9 @@ export function Header({ splashDone = false }: { splashDone?: boolean }) {
             ))}
 
             {/* CTA Button Added */}
-            <button className="hidden lg:block shimmer-btn bg-cyan text-white px-6 py-3.5 rounded text-[11px] font-extrabold uppercase tracking-[2px] shadow-[0_0_20px_rgba(64,145,177,0.4)] hover:bg-cyan/90 transition-all ml-auto whitespace-nowrap transform hover:-translate-y-0.5">
+            <Link to="/contact" className="hidden lg:flex items-center justify-center shimmer-btn bg-cyan text-white px-6 py-3.5 rounded text-[11px] font-extrabold uppercase tracking-[2px] shadow-[0_0_20px_rgba(64,145,177,0.4)] hover:bg-cyan/90 transition-all ml-auto whitespace-nowrap transform hover:-translate-y-0.5">
               GET A FREE QUOTE
-            </button>
+            </Link>
           </div>
           
         </div>
@@ -249,14 +250,14 @@ export function Header({ splashDone = false }: { splashDone?: boolean }) {
                           >
                             <div className="flex flex-col space-y-4 pt-4 pl-4 border-l border-white/10 mt-2">
                               {item.dropdown.map((sub, idx) => (
-                                <a
+                                <Link
                                   key={idx}
                                   onClick={() => setIsMenuOpen(false)}
-                                  href={sub.link}
+                                  to={sub.link}
                                   className="text-ghost text-sm hover:text-cyan uppercase tracking-widest font-semibold transition-colors leading-[1.4]"
                                 >
                                   {sub.name}
-                                </a>
+                                </Link>
                               ))}
                             </div>
                           </motion.div>
@@ -264,13 +265,13 @@ export function Header({ splashDone = false }: { splashDone?: boolean }) {
                       </AnimatePresence>
                     </>
                   ) : (
-                    <a
+                    <Link
                       onClick={() => setIsMenuOpen(false)}
-                      href={item.link || '#'}
+                      to={item.link || '/'}
                       className="text-white hover:text-cyan text-base font-bold tracking-[2px] uppercase transition-colors"
                     >
                       {item.name}
-                    </a>
+                    </Link>
                   )}
                 </div>
               ))}
@@ -307,12 +308,13 @@ export function Header({ splashDone = false }: { splashDone?: boolean }) {
                 </div>
               </div>
 
-              <button 
+              <Link 
                 onClick={() => setIsMenuOpen(false)}
-                className="w-full shimmer-btn bg-cyan text-white px-6 py-4 rounded text-sm font-extrabold uppercase tracking-[2px] shadow-[0_0_20px_rgba(64,145,177,0.4)] mt-4 transition-all hover:bg-cyan/90"
+                to="/contact"
+                className="w-full flex items-center justify-center shimmer-btn bg-cyan text-white px-6 py-4 rounded text-sm font-extrabold uppercase tracking-[2px] shadow-[0_0_20px_rgba(64,145,177,0.4)] mt-4 transition-all hover:bg-cyan/90"
               >
                 GET A FREE QUOTE
-              </button>
+              </Link>
             </div>
           </motion.div>
         )}

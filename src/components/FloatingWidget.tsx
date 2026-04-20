@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Phone, MessageSquare, X, Send } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export function FloatingWidget() {
   const [showTooltip, setShowTooltip] = useState(false);
@@ -97,6 +98,18 @@ export function FloatingWidget() {
                   className="w-full bg-navy/50 border border-white/10 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-white text-xs sm:text-sm focus:outline-none focus:border-cyan/50 transition-colors placeholder:text-ghost/30 resize-none"
                   required
                 ></textarea>
+                <div className="flex items-start gap-2 mt-1 mb-1">
+                  <input 
+                    type="checkbox" 
+                    id="consent-widget" 
+                    required
+                    className="mt-[2px] flex-shrink-0 w-3.5 h-3.5 rounded appearance-none border border-white/20 bg-white/5 checked:bg-cyan checked:border-cyan relative cursor-pointer before:content-[''] before:absolute before:inset-0 before:flex before:items-center before:justify-center checked:before:content-['✓'] before:text-navy before:font-bold before:text-[10px] transition-colors"
+                  />
+                  <label htmlFor="consent-widget" className="text-[8px] sm:text-[9px] max-w-[90%] text-ghost/70 leading-[1.4] cursor-pointer">
+                    I agree to the <Link to="/terms" className="text-cyan hover:underline">Terms &amp; Conditions</Link> provided by the company. By providing my phone number, I agree to receive text messages from the business. We respect your privacy - learn how we handle your data in our <Link to="/privacy" className="text-cyan hover:underline">Privacy Policy</Link>.
+                  </label>
+                </div>
+
                 <button 
                   type="submit"
                   className="w-full mt-1 bg-cyan text-white shadow-[0_0_15px_rgba(64,145,177,0.3)] hover:shadow-[0_0_25px_rgba(64,145,177,0.5)] rounded-lg px-3 sm:px-4 py-2.5 sm:py-3 text-[10px] sm:text-xs font-bold uppercase tracking-widest hover:bg-cyan/90 transition-all flex items-center justify-center gap-2"

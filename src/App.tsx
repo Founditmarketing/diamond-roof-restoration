@@ -1,17 +1,19 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AnnouncementBar } from './components/AnnouncementBar';
 import { Header } from './components/Header';
-import { Hero } from './components/Hero';
-import { TrustBanner } from './components/TrustBanner';
-import { ServicesGrid } from './components/ServicesGrid';
-import { BeforeAfter } from './components/BeforeAfter';
-import { ReviewsCarousel } from './components/ReviewsCarousel';
-import { ReactiveMap } from './components/ReactiveMap';
-import { FAQ } from './components/FAQ';
-import { CTA } from './components/CTA';
 import { Footer } from './components/Footer';
 import { FloatingWidget } from './components/FloatingWidget';
+import { ScrollToTop } from './components/ScrollToTop';
+import { HomePage } from './pages/HomePage';
+import { ContactPage } from './pages/ContactPage';
+import { TermsPage } from './pages/TermsPage';
+import { PrivacyPage } from './pages/PrivacyPage';
+import { LocationPage } from './pages/LocationPage';
+import { AboutPage } from './pages/AboutPage';
+import { ServicePage } from './pages/ServicePage';
+import { ProjectsPage } from './pages/ProjectsPage';
 
 interface FlyCoords {
   fromX: number;
@@ -24,7 +26,9 @@ interface FlyCoords {
 
 export default function App() {
   // 0 = splash showing, 1 = logo flying, 2 = done
-  const [phase, setPhase] = useState(0);
+  const [phase, setPhase] = useState(() => {
+    return sessionStorage.getItem('splashDone') ? 2 : 0;
+  });
   const [flyCoords, setFlyCoords] = useState<FlyCoords | null>(null);
   const splashLogoRef = useRef<HTMLImageElement>(null);
 
@@ -53,14 +57,22 @@ export default function App() {
       } else {
         // Fallback: skip directly to done
         setPhase(2);
+        sessionStorage.setItem('splashDone', 'true');
       }
     }, 1600);
 
     return () => clearTimeout(timer);
   }, []);
 
+  const handleAnimationComplete = () => {
+    setPhase(2);
+    sessionStorage.setItem('splashDone', 'true');
+  };
+
   return (
-    <div className="min-h-screen bg-navy text-white selection:bg-cyan selection:text-white">
+    <BrowserRouter>
+      <ScrollToTop />
+      <div className="min-h-screen bg-navy text-white selection:bg-cyan selection:text-white">
 
       {/* Dark full-screen overlay — fades away as logo flies */}
       <AnimatePresence>
@@ -107,7 +119,7 @@ export default function App() {
             width: flyCoords.toW,
           }}
           transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
-          onAnimationComplete={() => setPhase(2)}
+          onAnimationComplete={handleAnimationComplete}
         />
       )}
 
@@ -117,18 +129,20 @@ export default function App() {
         <Header splashDone={phase >= 2} />
       </div>
 
-      <main>
-        <Hero />
-        <TrustBanner />
-        <ServicesGrid />
-        <BeforeAfter />
-        <ReviewsCarousel />
-        <ReactiveMap />
-        <FAQ />
-        <CTA />
-      </main>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/services/:serviceId" element={<ServicePage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/terms" element={<TermsPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
+        <Route path="/service-areas/:cityId" element={<LocationPage />} />
+      </Routes>
+
       <Footer />
       <FloatingWidget />
     </div>
+    </BrowserRouter>
   );
 }

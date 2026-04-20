@@ -15,7 +15,7 @@ const allProjects = [
   {
     id: 'c3',
     category: 'commercial',
-    image: '/diamondroofgallery12.jpg',
+    image: '/diamondroofgallery14.jpg',
   },
   {
     id: 'c4',
@@ -86,9 +86,9 @@ export function BeforeAfter() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:h-[600px]">
           {/* Spotlit Image */}
-          <div className="lg:col-span-8 h-[280px] md:h-[450px] lg:h-[600px] relative rounded-2xl overflow-hidden border border-cyan/30 shadow-[0_40px_100px_rgba(0,0,0,0.5)] group">
+          <div className="lg:col-span-8 h-[280px] md:h-[450px] lg:h-full relative rounded-2xl overflow-hidden border border-cyan/30 shadow-[0_40px_100px_rgba(0,0,0,0.5)] group">
             <AnimatePresence mode="wait">
               <motion.img
                 key={spotlitProject.id}
@@ -105,7 +105,7 @@ export function BeforeAfter() {
           </div>
 
           {/* Smaller Images Grid */}
-          <div className="lg:col-span-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 gap-4 content-start">
+          <div className="lg:col-span-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 gap-4 lg:auto-rows-fr h-full">
             <AnimatePresence mode="popLayout">
               {smallerProjects.map((project) => (
                 <motion.button
@@ -116,7 +116,7 @@ export function BeforeAfter() {
                   transition={{ duration: 0.3 }}
                   key={project.id}
                   onClick={() => setSpotlightId(project.id)}
-                  className="relative aspect-[4/3] rounded-lg overflow-hidden border border-white/10 hover:border-cyan/50 transition-all duration-300 group shadow-lg"
+                  className="relative aspect-[4/3] lg:aspect-auto lg:h-full lg:w-full rounded-lg overflow-hidden border border-white/10 hover:border-cyan/50 transition-all duration-300 group shadow-lg"
                 >
                   <img 
                     src={project.image} 
