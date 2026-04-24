@@ -51,8 +51,8 @@ const SERVICES_DATA = [
   },
   {
     id: "membrane-roofing-installation",
-    shortName: "Membrane Roofing",
-    title: "Membrane Roofing Installation",
+    shortName: "Roof Restoration",
+    title: "Roof Restoration Services",
     heroDesc: "High-performance fluid-applied membranes that form a monolithic, watertight seal over existing commercial roofs.",
     headerTag: "Liquid Membrane",
     bodyTitle: "Monolithic Waterproofing.",

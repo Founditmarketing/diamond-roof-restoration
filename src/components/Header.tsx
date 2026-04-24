@@ -13,7 +13,7 @@ const navItems = {
         { name: 'Roofing Contractor', link: '/services/roofing-contractor' },
         { name: 'Metal Roof Installation', link: '/services/metal-roof-installation' },
         { name: 'Asphalt Shingle Roof Installation', link: '/services/asphalt-shingle-roof-installation' },
-        { name: 'Membrane Roofing Installation', link: '/services/membrane-roofing-installation' },
+        { name: 'Roof Restoration', link: '/services/membrane-roofing-installation' },
         { name: 'Single Ply Roofing Installation', link: '/services/single-ply-roofing-installation' },
         { name: 'Fabric Reinforced Roofing Installation', link: '/services/fabric-reinforced-roofing-installation' },
         { name: 'Commercial Roof Waterproofing', link: '/services/commercial-roof-waterproofing' },
