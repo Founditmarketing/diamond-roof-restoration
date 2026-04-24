@@ -43,6 +43,8 @@ const navItems = {
       dropdown: [
         { name: 'About', link: '/about' },
         { name: 'Projects', link: '/projects' },
+        { name: 'Blog', link: '/blog' },
+        { name: 'Maintenance Plans', link: '/maintenance' },
         { name: 'Contact Us', link: '/contact' },
         { name: 'Careers', link: '/employment' }
       ]

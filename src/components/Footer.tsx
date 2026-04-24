@@ -5,10 +5,12 @@ export function Footer() {
   const quickLinks = [
     { name: 'Home', path: '/' },
     { name: 'Projects', path: '/projects' },
+    { name: 'Blog', path: '/blog' },
+    { name: 'Maintenance Plans', path: '/maintenance' },
     { name: 'Service Areas', path: '/#locations' },
     { name: 'About Us', path: '/about' },
     { name: 'Contact', path: '/contact' },
-    { name: 'Review Us', path: '/#reviews' },
+    { name: 'Careers', path: '/employment' },
   ];
 
   const servicesLinks = [

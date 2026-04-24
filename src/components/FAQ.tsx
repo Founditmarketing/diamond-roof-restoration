@@ -17,8 +17,8 @@ const faqs = [
     answer: "Contact Diamond Roof Restorations for a professional inspection in your area—whether you're in Jacksonville, Valdosta, or another Georgia service location. We'll assess the damage and recommend the right restoration solution to stop the leak."
   },
   {
-    question: "How do I schedule a roof inspection in Jesup or nearby areas?",
-    answer: "Call Diamond Roof Restorations to request an inspection at your commercial property. We serve Jesup, Baxley, Waycross, Brunswick, and surrounding areas with fast scheduling to get you answers quickly."
+    question: "How do I schedule a roof inspection?",
+    answer: "Scheduling is simple — just give us a call or fill out the contact form on our website. We'll confirm your location, assess your needs, and get an inspection on the calendar as quickly as possible. We serve residential and commercial properties across Georgia, Florida, and South Carolina."
   },
   {
     question: "What is the difference between roof restoration and replacement?",

@@ -16,6 +16,8 @@ import { ServicePage } from './pages/ServicePage';
 import { ProjectsPage } from './pages/ProjectsPage';
 import { EmploymentPage } from './pages/EmploymentPage';
 import { SalesApplicationPage, LaborApplicationPage } from './pages/ApplicationPages';
+import { MaintenancePage } from './pages/MaintenancePage';
+import { BlogPage } from './pages/BlogPage';
 
 interface FlyCoords {
   fromX: number;
@@ -143,6 +145,8 @@ export default function App() {
         <Route path="/employment" element={<EmploymentPage />} />
         <Route path="/employment/sales" element={<SalesApplicationPage />} />
         <Route path="/employment/labor" element={<LaborApplicationPage />} />
+        <Route path="/maintenance" element={<MaintenancePage />} />
+        <Route path="/blog" element={<BlogPage />} />
       </Routes>
 
       <Footer />
