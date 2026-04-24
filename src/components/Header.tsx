@@ -18,7 +18,9 @@ const navItems = {
         { name: 'Fabric Reinforced Roofing Installation', link: '/services/fabric-reinforced-roofing-installation' },
         { name: 'Commercial Roof Waterproofing', link: '/services/commercial-roof-waterproofing' },
         { name: 'Spray Foam Roofing Installation', link: '/services/spray-foam-roofing-installation' },
-        { name: 'TPO', link: '/services/tpo' }
+        { name: 'TPO', link: '/services/tpo' },
+        { name: 'Vinyl Siding', link: '/services/vinyl-siding' },
+        { name: 'Deck Building', link: '/services/deck-building' },
       ]
     }
   ],

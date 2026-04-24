@@ -16,7 +16,9 @@ export function Footer() {
   const servicesLinks = [
     { name: 'Roofing Contractor', path: '/services/roofing-contractor' },
     { name: 'Metal Roof Installation', path: '/services/metal-roof-installation' },
-    { name: 'Asphalt Shingle Roof Installation', path: '/services/asphalt-shingle-roof-installation' }
+    { name: 'Asphalt Shingle Roof Installation', path: '/services/asphalt-shingle-roof-installation' },
+    { name: 'Vinyl Siding', path: '/services/vinyl-siding' },
+    { name: 'Deck Building', path: '/services/deck-building' },
   ];
 
   return (

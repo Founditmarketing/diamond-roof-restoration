@@ -138,6 +138,36 @@ const SERVICES_DATA = [
     ],
     features: ["New TPO Installation", "Weathered TPO Restoration", "Heat-Welded Seam Repair", "Extreme UV Resistance"],
     image: "/diamondroofgallery19.jpg"
+  },
+  {
+    id: "vinyl-siding",
+    shortName: "Vinyl Siding",
+    title: "Vinyl Siding Installation & Replacement",
+    heroDesc: "Durable, low-maintenance vinyl siding that protects your property from the elements while elevating curb appeal. Expert installation across Georgia, Florida, and South Carolina.",
+    headerTag: "Exterior Specialists",
+    bodyTitle: "Protect Your Walls. Elevate Your Property.",
+    bodyHtml: [
+      "Your roof isn't the only barrier between your property and the elements — your siding is equally critical. Failing, cracked, or aging siding allows moisture infiltration, promotes mold growth inside wall cavities, and dramatically reduces your property's energy efficiency and resale value.",
+      "Diamond Roof Restoration brings the same precision and professionalism to vinyl siding that we apply to every roofing project. We install high-grade, impact-resistant vinyl panels that are engineered to withstand the humidity, heat, and severe storm seasons common across the Southeast. Our siding systems require virtually zero maintenance and hold their color and structure for decades.",
+      "Whether you are replacing deteriorating wood or aluminum siding on a residential property, or refreshing the exterior of a commercial building, our crews work cleanly, efficiently, and to a finished standard that we're proud to put our name on."
+    ],
+    features: ["Impact-Resistant Panels", "Moisture & Mold Barrier", "Energy Efficiency Boost", "Full Trim & Wrap Included"],
+    image: "/diamondroofresidential1.jpg"
+  },
+  {
+    id: "deck-building",
+    shortName: "Deck Building",
+    title: "Custom Deck Design & Construction",
+    heroDesc: "Beautifully crafted, structurally engineered decks built to last in the Southern climate. From concept to completion, we handle everything.",
+    headerTag: "Custom Construction",
+    bodyTitle: "Expand Your Living Space Outdoors.",
+    bodyHtml: [
+      "A well-built deck does more than add square footage — it transforms how you use and enjoy your property. Diamond Roof Restoration builds custom decks for residential homeowners and commercial properties across Georgia, Florida, and South Carolina, engineered specifically for the demands of the Southern climate: heat, humidity, UV exposure, and seasonal storm loads.",
+      "We work with a range of premium decking materials — pressure-treated lumber, composite decking (Trex, TimberTech), and PVC board — depending on your budget, aesthetic goals, and maintenance preferences. Every deck we build is engineered with proper footing depths, joist sizing, and ledger connections to meet or exceed local building codes.",
+      "From a simple ground-level platform to a multi-level entertainment structure with built-in seating, railings, and integrated lighting, our team handles design, permitting, and construction start to finish. You get one point of contact, transparent pricing, and a finished product backed by our workmanship warranty."
+    ],
+    features: ["Custom Design & Permitting", "Composite & Treated Lumber", "Code-Compliant Engineering", "Workmanship Warranty"],
+    image: "/diamondroofresidential2.jpg"
   }
 ];
 
