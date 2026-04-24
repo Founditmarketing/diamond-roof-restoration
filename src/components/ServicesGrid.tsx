@@ -24,7 +24,7 @@ const services = [
     image: '/diamondroofresidential1.jpg'
   },
   {
-    title: 'Membrane Restoration',
+    title: 'Roof Restoration',
     icon: Droplets,
     description: 'Fluid-applied elastomeric systems that create a seamless, waterproof barrier over aging single-ply and modified bitumen roofs.',
     features: ['Expands & contracts with weather', 'Highly reflective surface', 'Sustainable, eco-friendly solution'],
