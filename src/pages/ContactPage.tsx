@@ -1,8 +1,73 @@
+import React, { useState, FormEvent } from 'react';
 import { motion } from 'motion/react';
-import { Mail, MapPin, Phone, Send } from 'lucide-react';
+import { CheckCircle, Mail, MapPin, Phone, Send, XCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+interface FormState {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  message: string;
+  consent: boolean;
+}
+
+type SubmitStatus = 'idle' | 'loading' | 'success' | 'error';
+
+const INITIAL_FORM: FormState = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  phone: '',
+  message: '',
+  consent: false,
+};
+
 export function ContactPage() {
+  const [form, setForm] = useState<FormState>(INITIAL_FORM);
+  const [status, setStatus] = useState<SubmitStatus>('idle');
+  const [errorMsg, setErrorMsg] = useState('');
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    const { name, value, type } = e.target;
+    setForm(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value,
+    }));
+  }
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus('loading');
+    setErrorMsg('');
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName: form.firstName,
+          lastName: form.lastName,
+          email: form.email,
+          phone: form.phone,
+          message: form.message,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Something went wrong. Please try again.');
+      }
+
+      setStatus('success');
+      setForm(INITIAL_FORM);
+    } catch (err: unknown) {
+      setStatus('error');
+      setErrorMsg(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+    }
+  }
+
   return (
     <main className="min-h-screen bg-navy relative pt-48 pb-24 overflow-hidden">
       {/* Background elements */}
@@ -51,8 +116,8 @@ export function ContactPage() {
               </div>
               <h3 className="text-white font-bold text-xl mb-2">Email Us</h3>
               <p className="text-ghost/80 mb-4 text-sm">Send us a detailed message anytime.</p>
-              <a href="mailto:diamondroofrestorations@protonmail.com" className="text-white/90 hover:text-cyan font-semibold text-sm transition-colors block break-words">
-                diamondroofrestorations@protonmail.com
+              <a href="mailto:hello@diamondroofs.net" className="text-white/90 hover:text-cyan font-semibold text-sm transition-colors block break-words">
+                hello@diamondroofs.net
               </a>
             </div>
 
@@ -79,72 +144,110 @@ export function ContactPage() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="lg:col-span-7"
           >
-            <form className="p-2 md:p-4 bg-transparent">
-              <div className="flex flex-col gap-6 mb-6">
-                <div>
-                  <label className="block text-ghost/80 text-[11px] font-bold uppercase tracking-[1px] mb-2">
-                    First Name *
-                  </label>
-                  <input 
-                    type="text" 
-                    className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-4 text-white focus:outline-none focus:border-cyan/50 focus:bg-white/5 transition-all"
-                    placeholder="John"
-                    required
-                  />
+            {/* ── Success State ── */}
+            {status === 'success' ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="flex flex-col items-center justify-center gap-6 p-12 rounded-2xl bg-white/5 backdrop-blur-xl border border-cyan/30 shadow-2xl text-center h-full min-h-[400px]"
+              >
+                <CheckCircle className="w-16 h-16 text-cyan" />
+                <h2 className="text-white text-3xl font-extrabold">Message Sent!</h2>
+                <p className="text-ghost/80 max-w-sm">
+                  Thank you for reaching out. We'll get back to you as soon as possible, usually within one business day.
+                </p>
+                <button
+                  onClick={() => setStatus('idle')}
+                  className="mt-4 px-8 py-3 rounded-xl border border-cyan/40 text-cyan text-sm font-bold uppercase tracking-widest hover:bg-cyan/10 transition-colors"
+                >
+                  Send Another Message
+                </button>
+              </motion.div>
+            ) : (
+              <form onSubmit={handleSubmit} className="p-2 md:p-4 bg-transparent">
+                <div className="flex flex-col gap-6 mb-6">
+                  <div>
+                    <label className="block text-ghost/80 text-[11px] font-bold uppercase tracking-[1px] mb-2">
+                      First Name *
+                    </label>
+                    <input
+                      type="text"
+                      name="firstName"
+                      value={form.firstName}
+                      onChange={handleChange}
+                      className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-4 text-white focus:outline-none focus:border-cyan/50 focus:bg-white/5 transition-all"
+                      placeholder="John"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-ghost/80 text-[11px] font-bold uppercase tracking-[1px] mb-2">
+                      Last Name *
+                    </label>
+                    <input
+                      type="text"
+                      name="lastName"
+                      value={form.lastName}
+                      onChange={handleChange}
+                      className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-4 text-white focus:outline-none focus:border-cyan/50 focus:bg-white/5 transition-all"
+                      placeholder="Doe"
+                      required
+                    />
+                  </div>
                 </div>
-                <div>
-                  <label className="block text-ghost/80 text-[11px] font-bold uppercase tracking-[1px] mb-2">
-                    Last Name *
-                  </label>
-                  <input 
-                    type="text" 
-                    className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-4 text-white focus:outline-none focus:border-cyan/50 focus:bg-white/5 transition-all"
-                    placeholder="Doe"
-                    required
-                  />
-                </div>
-              </div>
 
-              <div className="flex flex-col gap-6 mb-6">
-                <div>
-                  <label className="block text-ghost/80 text-[11px] font-bold uppercase tracking-[1px] mb-2">
-                    Email Address *
-                  </label>
-                  <input 
-                    type="email" 
-                    className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-4 text-white focus:outline-none focus:border-cyan/50 focus:bg-white/5 transition-all"
-                    placeholder="john@example.com"
-                    required
-                  />
+                <div className="flex flex-col gap-6 mb-6">
+                  <div>
+                    <label className="block text-ghost/80 text-[11px] font-bold uppercase tracking-[1px] mb-2">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-4 text-white focus:outline-none focus:border-cyan/50 focus:bg-white/5 transition-all"
+                      placeholder="john@example.com"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-ghost/80 text-[11px] font-bold uppercase tracking-[1px] mb-2">
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={form.phone}
+                      onChange={handleChange}
+                      className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-4 text-white focus:outline-none focus:border-cyan/50 focus:bg-white/5 transition-all"
+                      placeholder="(555) 000-0000"
+                    />
+                  </div>
                 </div>
-                <div>
-                  <label className="block text-ghost/80 text-[11px] font-bold uppercase tracking-[1px] mb-2">
-                    Phone Number
-                  </label>
-                  <input 
-                    type="tel" 
-                    className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-4 text-white focus:outline-none focus:border-cyan/50 focus:bg-white/5 transition-all"
-                    placeholder="(555) 000-0000"
-                  />
-                </div>
-              </div>
 
-              <div className="mb-8">
-                <label className="block text-ghost/80 text-[11px] font-bold uppercase tracking-[1px] mb-2">
-                  How can we help? *
-                </label>
-                <textarea 
-                  rows={5}
-                  className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-4 text-white focus:outline-none focus:border-cyan/50 focus:bg-white/5 transition-all resize-none"
-                  placeholder="Describe your project or issue..."
-                  required
-                ></textarea>
-              </div>
+                <div className="mb-8">
+                  <label className="block text-ghost/80 text-[11px] font-bold uppercase tracking-[1px] mb-2">
+                    How can we help? *
+                  </label>
+                  <textarea
+                    name="message"
+                    value={form.message}
+                    onChange={handleChange}
+                    rows={5}
+                    className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-4 text-white focus:outline-none focus:border-cyan/50 focus:bg-white/5 transition-all resize-none"
+                    placeholder="Describe your project or issue..."
+                    required
+                  ></textarea>
+                </div>
 
                 <div className="flex items-start gap-3 mt-4 mb-6">
-                  <input 
-                    type="checkbox" 
-                    id="consent-contact" 
+                  <input
+                    type="checkbox"
+                    id="consent-contact"
+                    name="consent"
+                    checked={form.consent}
+                    onChange={handleChange}
                     required
                     className="mt-0.5 flex-shrink-0 w-4 h-4 rounded appearance-none border border-white/20 bg-white/5 checked:bg-cyan checked:border-cyan relative cursor-pointer before:content-[''] before:absolute before:inset-0 before:flex before:items-center before:justify-center checked:before:content-['✓'] before:text-navy before:font-bold before:text-[10px] transition-colors"
                   />
@@ -153,14 +256,40 @@ export function ContactPage() {
                   </label>
                 </div>
 
-              <button 
-                type="submit"
-                className="w-full group relative shimmer-btn bg-cyan text-white px-8 py-5 rounded-xl text-[14px] font-extrabold uppercase tracking-[2px] shadow-[0_0_30px_rgba(64,145,177,0.3)] hover:shadow-[0_0_40px_rgba(64,145,177,0.5)] transition-all flex items-center justify-center gap-3 overflow-hidden"
-              >
-                <span>Send Message</span>
-                <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-              </button>
-            </form>
+                {/* ── Error Banner ── */}
+                {status === 'error' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="flex items-center gap-3 mb-6 p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-sm"
+                  >
+                    <XCircle className="w-5 h-5 flex-shrink-0" />
+                    <span>{errorMsg}</span>
+                  </motion.div>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={status === 'loading'}
+                  className="w-full group relative shimmer-btn bg-cyan text-white px-8 py-5 rounded-xl text-[14px] font-extrabold uppercase tracking-[2px] shadow-[0_0_30px_rgba(64,145,177,0.3)] hover:shadow-[0_0_40px_rgba(64,145,177,0.5)] transition-all flex items-center justify-center gap-3 overflow-hidden disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  {status === 'loading' ? (
+                    <>
+                      <span>Sending…</span>
+                      <svg className="w-5 h-5 animate-spin" viewBox="0 0 24 24" fill="none">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                      </svg>
+                    </>
+                  ) : (
+                    <>
+                      <span>Send Message</span>
+                      <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    </>
+                  )}
+                </button>
+              </form>
+            )}
           </motion.div>
         </div>
       </div>
