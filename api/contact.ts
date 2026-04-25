@@ -16,7 +16,7 @@ export default async function handler(req: any, res: any) {
   try {
     const { data, error } = await resend.emails.send({
       from: 'Diamond Roof Restoration <hello@diamondroofs.net>',
-      to: ['jason@founditmarketing.com'],
+      to: ['diamondroofrestorations@protonmail.com'],
       replyTo: email,
       subject: `New Contact Form Submission — ${firstName} ${lastName}`,
       html: `
