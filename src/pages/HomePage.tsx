@@ -5,7 +5,7 @@ import { BeforeAfter } from '../components/BeforeAfter';
 import { ReviewsCarousel } from '../components/ReviewsCarousel';
 import { ReactiveMap } from '../components/ReactiveMap';
 import { FAQ } from '../components/FAQ';
-import { CTA } from '../components/CTA';
+
 
 export function HomePage() {
   return (
@@ -17,7 +17,7 @@ export function HomePage() {
       <ReviewsCarousel />
       <ReactiveMap />
       <FAQ />
-      <CTA />
+
     </main>
   );
 }
