@@ -42,22 +42,19 @@ export function ContactPage() {
     setErrorMsg('');
 
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch('https://www.founditos.com/api/contact-form/4359aa0a-3923-432e-9be0-effeb94cd858', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          firstName: form.firstName,
-          lastName: form.lastName,
-          email: form.email,
-          phone: form.phone,
+          name:    `${form.firstName} ${form.lastName}`.trim(),
+          email:   form.email,
+          phone:   form.phone,
           message: form.message,
         }),
       });
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.error || 'Something went wrong. Please try again.');
+      if (!res.ok && res.status !== 307) {
+        throw new Error('Something went wrong. Please try again.');
       }
 
       setStatus('success');
