@@ -71,15 +71,14 @@ export function FAQ() {
     setFaqStatus('loading');
     setFaqError('');
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch('https://www.founditos.com/api/contact-form/4359aa0a-3923-432e-9be0-effeb94cd858', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          firstName: faqForm.firstName,
-          lastName:  faqForm.lastName,
-          email:     faqForm.email,
-          phone:     faqForm.phone,
-          message:   faqForm.message,
+          name: `${faqForm.firstName} ${faqForm.lastName}`,
+          email: faqForm.email,
+          phone: faqForm.phone,
+          message: faqForm.message,
         }),
       });
       const data = await res.json();
