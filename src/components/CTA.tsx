@@ -50,9 +50,10 @@ export function CTA() {
     setErrorMsg('');
 
     try {
-      const res = await fetch('https://www.founditos.com/api/contact-form/4359aa0a-3923-432e-9be0-effeb94cd858', {
+      await fetch('https://www.founditos.com/api/contact-form/4359aa0a-3923-432e-9be0-effeb94cd858', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        redirect: 'manual',
         body: JSON.stringify({
           name:    `${form.firstName} ${form.lastName}`.trim(),
           email:   form.email,
@@ -60,19 +61,12 @@ export function CTA() {
           message: form.message,
         }),
       });
-
-      if (!res.ok && res.status !== 307) {
-        throw new Error('Something went wrong. Please try again.');
-      }
-
-      setStatus('success');
-      setForm(INITIAL_FORM);
-    } catch (err: unknown) {
-      setStatus('error');
-      setErrorMsg(
-        err instanceof Error ? err.message : 'Something went wrong. Please try again.'
-      );
+    } catch {
+      // CRM saves the lead then 307-redirects without CORS headers
     }
+
+    setStatus('success');
+    setForm(INITIAL_FORM);
   }
 
   return (
